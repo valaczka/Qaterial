@@ -93,7 +93,7 @@ static void Qaterial_registerTypes(const char* uri, const quint8 major, const qu
 	_minor = minor;
 	Qaterial_registerTypes();
 }
-
+/*
 static void Qaterial_loadFonts()
 {
 	const auto loadFont = [](const QString& fontFolderPath)
@@ -120,7 +120,7 @@ static void Qaterial_loadFonts()
 		loadFont(fontDirPath);
 	}
 }
-
+*/
 static void Qaterial_loadResources(bool autoRegisterStyle)
 {
 	qCDebug(qaterialUtils).noquote().nospace() << "Load Qaterial v" << qaterial::Version::version().readable();
@@ -132,14 +132,14 @@ static void Qaterial_loadResources(bool autoRegisterStyle)
 	Q_INIT_RESOURCE(QaterialIcons);
 
 	// Load all fonts embedded in QaterialFonts
-	Qaterial_loadFonts();
+	//Qaterial_loadFonts();
 
 	// By default Qaterial is set as qt quick controls 2 style.
 	// It can be disabled for people not using Qaterial as Style, but just using some components.
 	if(autoRegisterStyle)
 	{
-		//QQuickStyle::setStyle(QStringLiteral("Qaterial"));
-		//QQuickStyle::setFallbackStyle(QStringLiteral("Material"));
+		QQuickStyle::setStyle(QStringLiteral("Qaterial"));
+		QQuickStyle::setFallbackStyle(QStringLiteral("Material"));
 	}
 }
 
