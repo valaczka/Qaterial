@@ -10,6 +10,7 @@ import QtQuick.Controls 2.12
 
 // Qaterial
 import Qaterial 1.0 as Qaterial
+import "." as Qaterial
 
 T.ItemDelegate
 {
@@ -18,6 +19,10 @@ T.ItemDelegate
   // TEXT
   property alias overlineText: _content.overlineText
   property alias secondaryText: _content.secondaryText
+
+  property alias textColor: _content.textColor
+  property alias overlineColor: _content.overlineColor
+  property alias secondaryTextColor: _content.secondaryTextColor
 
   // THUMBNAIL
   property alias roundSource: _content.roundSource
@@ -48,15 +53,15 @@ T.ItemDelegate
   property bool forceDrawSeparator: false
 
   implicitWidth: Math.max(background ? implicitBackgroundWidth : 0,
-    implicitContentWidth + leftPadding + rightPadding)
+	implicitContentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(background ? implicitBackgroundHeight : 0,
-    Math.max(implicitContentHeight,
-      indicator ? indicator.implicitHeight : 0) + topPadding + bottomPadding) + bottomInset
+	Math.max(implicitContentHeight,
+	  indicator ? indicator.implicitHeight : 0) + topPadding + bottomPadding) + bottomInset
 
   leftPadding: !mirrored ? Qaterial.Style.delegate.leftPadding(control.type, control.lines) : Qaterial.Style.delegate
-    .rightPadding(control.type, control.lines)
+	.rightPadding(control.type, control.lines)
   rightPadding: mirrored ? Qaterial.Style.delegate.leftPadding(control.type, control.lines) : Qaterial.Style.delegate
-    .rightPadding(control.type, control.lines)
+	.rightPadding(control.type, control.lines)
   topPadding: 0
   bottomPadding: 0
   spacing: Qaterial.Style.delegate.spacing(control.type, control.lines)
@@ -66,34 +71,34 @@ T.ItemDelegate
   property bool drawline: Qaterial.Style.debug.drawDebugDelegate
   Qaterial.DebugRectangle
   {
-    anchors.fill: parent
-    border.color: "pink"
-    visible: control.drawline
+	anchors.fill: parent
+	border.color: "pink"
+	visible: control.drawline
   } // DebugRectangle
 
   contentItem: Qaterial.ListDelegateContent
   {
-    id: _content
-    text: control.text
-    spacing: control.spacing
-    enabled: control.enabled
-    mirrored: control.mirrored
-    drawline: control.drawline
-    onPrimary: control.onPrimary
-    colorReversed: control.colorReversed
-    iconSource: control.icon.source
+	id: _content
+	text: control.text
+	spacing: control.spacing
+	enabled: control.enabled
+	mirrored: control.mirrored
+	drawline: control.drawline
+	onPrimary: control.onPrimary
+	colorReversed: control.colorReversed
+	iconSource: control.icon.source
   } // ListDelegateContent
 
   background: Qaterial.ListDelegateBackground
   {
-    id: _background
-    type: control.type
-    lines: control.lines
-    pressed: control.pressed
-    rippleActive: control.down || control.visualFocus || control.hovered
-    rippleAnchor: control
-    onPrimary: control.onPrimary
-    highlighted: control.highlighted
+	id: _background
+	type: control.type
+	lines: control.lines
+	pressed: control.pressed
+	rippleActive: control.down || control.visualFocus || control.hovered
+	rippleAnchor: control
+	onPrimary: control.onPrimary
+	highlighted: control.highlighted
   } // ListDelegateBackground
 
   property alias toolSeparatorLeftPadding: _separator.leftPadding
@@ -101,32 +106,32 @@ T.ItemDelegate
 
   Qaterial.ToolSeparator
   {
-    id: _separator
-    anchors.right: control.right
-    anchors.left: control.left
-    anchors.bottom: control.bottom
-    verticalPadding: 0
-    orientation: Qt.Horizontal
-    visible:
-    {
-      if(control.forceDrawSeparator)
-        return true
+	id: _separator
+	anchors.right: control.right
+	anchors.left: control.left
+	anchors.bottom: control.bottom
+	verticalPadding: 0
+	orientation: Qt.Horizontal
+	visible:
+	{
+	  if(control.forceDrawSeparator)
+		return true
 
-      if(control.drawSeparator)
-      {
-        if(control.ListView.view.verticalLayoutDirection === ListView.TopToBottom)
-        {
-          // No separator for last element (top of the list)
-          return control.ListView.view.count > 1 &&
-            index < (control.ListView.view.count - 1)
-        }
-        else
-        {
-          // No separator for first element (bottom of the list)
-          return control.ListView.view.count > 1 && index
-        }
-      }
-      return false
-    }
+	  if(control.drawSeparator)
+	  {
+		if(control.ListView.view.verticalLayoutDirection === ListView.TopToBottom)
+		{
+		  // No separator for last element (top of the list)
+		  return control.ListView.view.count > 1 &&
+			index < (control.ListView.view.count - 1)
+		}
+		else
+		{
+		  // No separator for first element (bottom of the list)
+		  return control.ListView.view.count > 1 && index
+		}
+	  }
+	  return false
+	}
   } // ToolSeparator
 } // ItemDelegate

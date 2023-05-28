@@ -1,7 +1,8 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
+import QtQuick 2.15
+import QtQuick.Controls 2.15
 
 import Qaterial 1.0 as Qaterial
+import "." as Qaterial
 
 Grid
 {
@@ -18,8 +19,8 @@ Grid
   property date date
   Binding on date
   {
-    when: _selectedDatePressed
-    value: root._selectedDate
+	when: _selectedDatePressed
+	value: root._selectedDate
   }
   property date _selectedDate
 
@@ -57,13 +58,13 @@ Grid
   // Number of day in month controlled by property 'month' and 'year' set by user
   //warning: add 1 to get the true number of days of the Month
   readonly property int _numberOfDays: new Date(year, month + 1, 0)
-    .getDate();
+	.getDate();
 
   // Number of day in month previous month controlled by property 'month' and 'year' set by user
   //warning: add 1 to get the true number of days of the Month
   readonly property int _numberOfDaysPreviousMonth: month ? (new Date(year, month, 0))
-    .getDate() : (new Date(year - 1, 12, 0))
-    .getDate()
+	.getDate() : (new Date(year - 1, 12, 0))
+	.getDate()
 
   readonly property bool showLastRow: ((_numberOfDays + _indexFirstDateMonth) > 36)
 
@@ -73,51 +74,51 @@ Grid
 
   function _getPreviousMonthDate(index)
   {
-    if(month)
-      return new Date(year, month - 1, _numberOfDaysPreviousMonth + index - _indexFirstDateMonth + 2);
-    return new Date(year - 1, 11, _numberOfDaysPreviousMonth + index - _indexFirstDateMonth + 2);
+	if(month)
+	  return new Date(year, month - 1, _numberOfDaysPreviousMonth + index - _indexFirstDateMonth + 2);
+	return new Date(year - 1, 11, _numberOfDaysPreviousMonth + index - _indexFirstDateMonth + 2);
   }
 
   columns: 7
 
   Repeater
   {
-    id: repeater
-    model: root.showLastRow ? 42 : 35
-    delegate: Qaterial.CalendarDateButton
-    {
-      id: dateButton
+	id: repeater
+	model: root.showLastRow ? 42 : 35
+	delegate: Qaterial.CalendarDateButton
+	{
+	  id: dateButton
 
-      readonly property date date: dateInTheMonth ? new Date(root.year, root.month, index + 2 - root
-        ._indexFirstDateMonth) : root._getPreviousMonthDate(index)
-      text: date.getDate()
+	  readonly property date date: dateInTheMonth ? new Date(root.year, root.month, index + 2 - root
+		._indexFirstDateMonth) : root._getPreviousMonthDate(index)
+	  text: date.getDate()
 
-      readonly property bool dateInTheMonth: ((index + 1) >= root._indexFirstDateMonth) && (index < (root
-        ._indexFirstDateMonth + root._numberOfDays - 1))
+	  readonly property bool dateInTheMonth: ((index + 1) >= root._indexFirstDateMonth) && (index < (root
+		._indexFirstDateMonth + root._numberOfDays - 1))
 
-      enabled: dateInTheMonth && root.enabled && Qaterial.Calendar.isDateValid(root.from, root.to, date)
+	  enabled: dateInTheMonth && root.enabled && Qaterial.Calendar.isDateValid(root.from, root.to, date)
 
-      checked: root._indexSelectedDay === index
-      highlighted: root._indexToday === index
+	  checked: root._indexSelectedDay === index
+	  highlighted: root._indexToday === index
 
-      onClicked: function()
-      {
-        root._selectedDatePressed = true
-        root._selectedDate = date
+	  onClicked: function()
+	  {
+		root._selectedDatePressed = true
+		root._selectedDate = date
 
-        root._selectedDatePressed = false
-        root.accepted(date)
-      }
+		root._selectedDatePressed = false
+		root.accepted(date)
+	  }
 
-      //Qaterial.ToolTip
-      //{
-      //  text: checked ? "Selected date": "Current day"
-      //  visible: dateButton.hovered && (dateButton.checked || dateButton.highlighted)
-      //}
+	  //Qaterial.ToolTip
+	  //{
+	  //  text: checked ? "Selected date": "Current day"
+	  //  visible: dateButton.hovered && (dateButton.checked || dateButton.highlighted)
+	  //}
 
-      ToolTip.text: checked ? "Selected date" : "Current day"
-      ToolTip.visible: hovered && (checked || highlighted)
-    }
+	  ToolTip.text: checked ? "Selected date" : "Current day"
+	  ToolTip.visible: hovered && (checked || highlighted)
+	}
   }
   Component.onCompleted: () => _selectedDate = date
 }

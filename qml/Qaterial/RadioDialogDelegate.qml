@@ -9,12 +9,13 @@ import QtQuick.Controls 2.12
 
 // Qaterial
 import Qaterial 1.0 as Qaterial
+import "." as Qaterial
 
 Qaterial.RadioDelegate
 {
   onClicked: ListView.view.currentIndex = index
   checked: ListView.isCurrentItem
-  backgroundColor: Qaterial.Style.dialogColor
+  backgroundColor: "transparent" //Qaterial.Style.dialogColor
   indicatorSpacing: Qaterial.Style.dialog.indicatorSpacing
   alignTextRight: true
   LayoutMirroring.enabled: true

@@ -43,29 +43,30 @@ T.ProgressBar
 {
   id: _control
 
+  property color color: Material.accentColor
+
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-    implicitContentWidth + leftPadding + rightPadding)
+	implicitContentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-    implicitContentHeight + topPadding + bottomPadding)
+	implicitContentHeight + topPadding + bottomPadding)
 
   contentItem: ProgressBarImpl
   {
-    implicitHeight: 4
+	implicitHeight: 4
 
-    scale: _control.mirrored ? -1 : 1
-    color: _control.Material.accentColor
-    progress: _control.position
-    indeterminate: _control.visible && _control.indeterminate
+	scale: _control.mirrored ? -1 : 1
+	color: _control.color
+	progress: _control.position
+	indeterminate: _control.visible && _control.indeterminate
   } // ProgressBarImpl
 
   background: Rectangle
   {
-    implicitWidth: 200
-    implicitHeight: 4
-    y: (_control.height - height) / 2
-    height: 4
+	implicitWidth: 200
+	implicitHeight: 4
+	y: (_control.height - height) / 2
+	height: 4
 
-    color: Qt.rgba(_control.Material.accentColor.r, _control.Material.accentColor.g, _control.Material.accentColor
-      .b, 0.25)
+	color: Qt.rgba(_control.color.r, _control.color.g, _control.color.b, 0.25)
   } // Rectangle
 } // ProgressBar

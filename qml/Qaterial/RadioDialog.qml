@@ -9,6 +9,7 @@ import QtQuick.Controls 2.12
 
 // Qaterial
 import Qaterial 1.0 as Qaterial
+import "." as Qaterial
 
 Qaterial.ModalDialog
 {
@@ -25,12 +26,14 @@ Qaterial.ModalDialog
 
   Component
   {
-    id: _defaultDelegate
-    Qaterial.RadioDialogDelegate
-    {
-      text: model.text ? model.text : ""
-      secondaryText: model.secondaryText ? model.secondaryText : ""
-    } // RadioDialogDelegate
+	id: _defaultDelegate
+	Qaterial.RadioDialogDelegate
+	{
+	  text: model.text ? model.text : ""
+	  secondaryText: model.secondaryText ? model.secondaryText : ""
+	  icon.source: model.icon ? model.icon: ""
+	  iconColor: model.iconColor ? model.iconColor : Qaterial.Style.accentColor
+	} // RadioDialogDelegate
   } // Component
 
   horizontalPadding: 0
@@ -41,20 +44,20 @@ Qaterial.ModalDialog
   standardButtons: Dialog.Ok | Dialog.Cancel
   contentItem: ListView
   {
-    implicitHeight: Math.min(_root.maxHeight, _list.contentHeight)
-    //height: 200
-    interactive: contentHeight > height
-    id: _list
-    clip: true
-    model: _root.model
-    delegate: _root.delegate
-    highlightFollowsCurrentItem: true
-    currentIndex: _root.currentIndex
+	implicitHeight: Math.min(_root.maxHeight, _list.contentHeight)
+	//height: 200
+	interactive: contentHeight > height
+	id: _list
+	clip: true
+	model: _root.model
+	delegate: _root.delegate
+	highlightFollowsCurrentItem: true
+	currentIndex: _root.currentIndex
 
-    onCurrentIndexChanged:
-    {
-      if(_root.currentIndex !== currentIndex)
-        _root.currentIndex = currentIndex
-    }
+	onCurrentIndexChanged:
+	{
+	  if(_root.currentIndex !== currentIndex)
+		_root.currentIndex = currentIndex
+	}
   } // ListView
 } // ModelDialog

@@ -4,25 +4,26 @@
  */
 
 // Qt
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Controls.impl 2.12
-import QtQuick.Templates 2.12 as T
-import QtQuick.Controls.Material 2.12
-import QtQuick.Controls.Material.impl 2.12
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Controls.impl 2.15
+import QtQuick.Templates 2.15 as T
+import QtQuick.Controls.Material 2.15
+import QtQuick.Controls.Material.impl 2.15
 
 import Qaterial 1.0 as Qaterial
+import "." as Qaterial
 
 T.ComboBox
 {
   id: _control
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-    implicitContentWidth + leftPadding + rightPadding)
+	implicitContentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-    implicitContentHeight + topPadding + bottomPadding,
-    implicitIndicatorHeight + topPadding + bottomPadding)
+	implicitContentHeight + topPadding + bottomPadding,
+	implicitIndicatorHeight + topPadding + bottomPadding)
 
   topInset: 6
   bottomInset: 6
@@ -34,161 +35,165 @@ T.ComboBox
   Material.background: flat ? "transparent" : undefined
   property color foregroundColor: flat ? undefined : Material.primaryTextColor
 
+  property double backgroundBorderHeight: 2
+  property color backgroundHighlightColor: Qaterial.Style.accentColor
+
   delegate: MenuItem
   {
-    width: parent.width
-    text: _control.textRole ? (Array.isArray(_control.model) ? modelData[_control.textRole] : model[_control
-      .textRole]) : modelData
-    Material.foreground: _control.currentIndex === index ? parent.Material.accent : parent.Material.foreground
-    highlighted: _control.highlightedIndex === index
-    hoverEnabled: _control.hoverEnabled
+	width: parent.width
+	text: _control.textRole ? (Array.isArray(_control.model) ? modelData[_control.textRole] : model[_control
+	  .textRole]) : modelData
+	Material.foreground: _control.currentIndex === index ? parent.Material.accent : parent.Material.foreground
+	highlighted: _control.highlightedIndex === index
+	hoverEnabled: _control.hoverEnabled
   } // MenuItem
 
   indicator: ColorImage
   {
-    x: _control.mirrored ? _control.padding : _control.width - width - _control.padding
-    y: _control.topPadding + (_control.availableHeight - height) / 2
-    color: _control.enabled ? _control.Material.foreground : _control.Material.hintTextColor
-    source: Qaterial.Icons.menuDown
+	x: _control.mirrored ? _control.padding : _control.width - width - _control.padding
+	y: _control.topPadding + (_control.availableHeight - height) / 2
+	color: _control.enabled ? _control.Material.foreground : _control.Material.hintTextColor
+	source: Qaterial.Icons.menuDown
   } // ColorImage
 
   contentItem: T.TextField
   {
-    padding: 6
-    leftPadding: _control.editable ? 2 : _control.mirrored ? 0 : 12
-    rightPadding: _control.editable ? 2 : _control.mirrored ? 12 : 0
+	padding: 6
+	leftPadding: _control.editable ? 2 : _control.mirrored ? 0 : 12
+	rightPadding: _control.editable ? 2 : _control.mirrored ? 12 : 0
 
-    text: _control.editable ? _control.editText : _control.displayText
+	text: _control.editable ? _control.editText : _control.displayText
 
-    enabled: _control.editable
-    autoScroll: _control.editable
-    readOnly: _control.down
-    inputMethodHints: _control.inputMethodHints
-    validator: _control.validator
+	enabled: _control.editable
+	autoScroll: _control.editable
+	readOnly: _control.down
+	inputMethodHints: _control.inputMethodHints
+	validator: _control.validator
 
-    font: _control.font
-    color: _control.enabled ? _control.Material.foreground : _control.Material.hintTextColor
-    selectionColor: _control.Material.accentColor
-    selectedTextColor: _control.Material.primaryHighlightedTextColor
-    verticalAlignment: Text.AlignVCenter
+	font: _control.font
+	color: _control.enabled ? _control.Material.foreground : _control.Material.hintTextColor
+	selectionColor: _control.Material.accentColor
+	selectedTextColor: _control.Material.primaryHighlightedTextColor
+	verticalAlignment: Text.AlignVCenter
 
-    cursorDelegate: CursorDelegate {}
+	cursorDelegate: CursorDelegate {}
   } // TextField
 
   background: Rectangle
   {
-    implicitWidth: 120
-    implicitHeight: _control.Material.buttonHeight
+	implicitWidth: 120
+	implicitHeight: _control.Material.buttonHeight
 
-    radius: _control.flat ? 0 : 2
-    color: !_control.editable ? _control.Material.dialogColor : "transparent"
+	radius: _control.flat ? 0 : 2
+	color: !_control.editable ? _control.Material.dialogColor : "transparent"
 
-    layer.enabled: _control.enabled && !_control.editable && _control.Material.background.a > 0
-    layer.effect: ElevationEffect
-    {
-      elevation: _control.Material.elevation
-    } // ElevationEffect
+	layer.enabled: _control.enabled && !_control.editable && _control.Material.background.a > 0
+	layer.effect: ElevationEffect
+	{
+	  elevation: _control.Material.elevation
+	} // ElevationEffect
 
-    Rectangle
-    {
-      visible: _control.editable
-      y: parent.y + _control.baselineOffset
-      width: parent.width
-      height: _control.activeFocus ? 2 : 1
-      color: _control.editable && _control.activeFocus ? _control.Material.accentColor : _control.Material
-        .hintTextColor
-    } // Rectangle
+	Rectangle
+	{
+	  visible: _control.editable
+	  y: parent.y + _control.baselineOffset
+	  width: parent.width
+	  height: _control.activeFocus ? 2 : 1
+	  color: _control.editable && _control.activeFocus ? _control.Material.accentColor : _control.Material
+		.hintTextColor
+	} // Rectangle
 
-    Rectangle
-    {
-      height: 2 //_control.backgroundBorderHeight
-      color: "red" //_control.backgroundHighlightColor
-      width: _control.activeFocus ? parent.width : 0
-      x: _control.activeFocus ? 0 : parent.width / 2
+	Rectangle
+	{
+	  height: _control.backgroundBorderHeight
+	  color: _control.backgroundHighlightColor
+	  width: _control.activeFocus ? parent.width : 0
+	  x: _control.activeFocus ? 0 : parent.width / 2
 
-      Behavior on width
-      {
-        enabled: !_control.activeFocus
-        NumberAnimation
-        {
-          easing.type: Easing.OutCubic;
-          duration: 300
-        } // NumberAnimation
-      } // Behavior
+	  Behavior on width
+	  {
+		enabled: !_control.activeFocus
+		NumberAnimation
+		{
+		  easing.type: Easing.OutCubic;
+		  duration: 300
+		} // NumberAnimation
+	  } // Behavior
 
-      Behavior on x
-      {
-        enabled: !_control.activeFocus
-        NumberAnimation
-        {
-          easing.type: Easing.OutCubic;
-          duration: 300
-        } // NumberAnimation
-      } // Behavior
-    } // Rectangle
+	  Behavior on x
+	  {
+		enabled: !_control.activeFocus
+		NumberAnimation
+		{
+		  easing.type: Easing.OutCubic;
+		  duration: 300
+		} // NumberAnimation
+	  } // Behavior
+	} // Rectangle
 
-    Ripple
-    {
-      clip: _control.flat
-      clipRadius: _control.flat ? 0 : 2
-      x: _control.editable && _control.indicator ? _control.indicator.x : 0
-      width: _control.editable && _control.indicator ? _control.indicator.width : parent.width
-      height: parent.height
-      pressed: _control.pressed
-      anchor: _control.editable && _control.indicator ? _control.indicator : _control
-      active: _control.pressed || _control.visualFocus || _control.hovered
-      color: _control.Material.rippleColor
-    } // Ripple
+	Ripple
+	{
+	  clip: _control.flat
+	  clipRadius: _control.flat ? 0 : 2
+	  x: _control.editable && _control.indicator ? _control.indicator.x : 0
+	  width: _control.editable && _control.indicator ? _control.indicator.width : parent.width
+	  height: parent.height
+	  pressed: _control.pressed
+	  anchor: _control.editable && _control.indicator ? _control.indicator : _control
+	  active: _control.pressed || _control.visualFocus || _control.hovered
+	  color: _control.Material.rippleColor
+	} // Ripple
   } // Rectangle
 
   popup: T.Popup
   {
-    y: _control.editable ? _control.height - 5 : 0
-    width: _control.width
-    height: Math.min(contentItem.implicitHeight, _control.Window.height - topMargin - bottomMargin)
-    transformOrigin: Item.Top
-    topMargin: 12
-    bottomMargin: 12
+	//y: _control.editable ? _control.height - 5 : 0
+	y: _control.height - _control.bottomInset
+	width: _control.width
+	height: Math.min(contentItem.implicitHeight, _control.Window.height - topMargin - bottomMargin)
+	transformOrigin: Item.Top
+	topMargin: 12
+	bottomMargin: 12
 
-    Material.theme: _control.Material.theme
-    Material.accent: _control.Material.accent
-    Material.primary: _control.Material.primary
+	Material.theme: _control.Material.theme
+	Material.accent: _control.Material.accent
+	Material.primary: _control.Material.primary
 
-    enter: Transition
-    {
-      // grow_fade_in
-      NumberAnimation { property: "scale";from: 0.9;to: 1.0;easing.type: Easing.OutQuint;duration: 220 }
-      NumberAnimation { property: "opacity";from: 0.0;to: 1.0;easing.type: Easing.OutCubic;duration: 150 }
-    } // Transition
+	enter: Transition
+	{
+	  // grow_fade_in
+	  NumberAnimation { property: "scale";from: 0.9;to: 1.0;easing.type: Easing.OutQuint;duration: 220 }
+	  NumberAnimation { property: "opacity";from: 0.0;to: 1.0;easing.type: Easing.OutCubic;duration: 150 }
+	} // Transition
 
-    exit: Transition
-    {
-      // shrink_fade_out
-      NumberAnimation { property: "scale";from: 1.0;to: 0.9;easing.type: Easing.OutQuint;duration: 220 }
-      NumberAnimation { property: "opacity";from: 1.0;to: 0.0;easing.type: Easing.OutCubic;duration: 150 }
-    } // Transition
+	exit: Transition
+	{
+	  // shrink_fade_out
+	  NumberAnimation { property: "scale";from: 1.0;to: 0.9;easing.type: Easing.OutQuint;duration: 220 }
+	  NumberAnimation { property: "opacity";from: 1.0;to: 0.0;easing.type: Easing.OutCubic;duration: 150 }
+	} // Transition
 
-    contentItem: ListView
-    {
-      clip: true
-      implicitHeight: contentHeight
-      model: _control.delegateModel
-      currentIndex: _control.highlightedIndex
-      highlightMoveDuration: 0
+	contentItem: ListView
+	{
+	  clip: true
+	  implicitHeight: contentHeight
+	  model: _control.delegateModel
+	  currentIndex: _control.highlightedIndex
+	  highlightMoveDuration: 0
 
-      T.ScrollIndicator.vertical: ScrollIndicator {}
-    } // ListView
+	  T.ScrollIndicator.vertical: ScrollIndicator {}
+	} // ListView
 
-    background: Rectangle
-    {
-      radius: 2
-      color: parent.Material.dialogColor
+	background: Rectangle
+	{
+	  radius: 2
+	  color: Qaterial.Style.dialogColor//parent.Material.dialogColor
 
-      layer.enabled: _control.enabled
-      layer.effect: ElevationEffect
-      {
-        elevation: 8
-      } // ElevationEffect
-    } // Rectangle
+	  layer.enabled: _control.enabled
+	  layer.effect: ElevationEffect
+	  {
+		elevation: 8
+	  } // ElevationEffect
+	} // Rectangle
   } // Popup
 } // ComboBox

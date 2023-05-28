@@ -2,6 +2,7 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 
 import Qaterial 1.0 as Qaterial
+import "." as Qaterial
 
 Rectangle
 {
@@ -13,20 +14,30 @@ Rectangle
 
   property string text
 
-  Rectangle
+  property alias todayButton: todayButton
+
+  /*Rectangle
   {
-    anchors.bottom: parent.bottom
-    anchors.left: parent.left
-    anchors.right: parent.right
-    height: parent.height / 2
-    color: parent.color
-  }
+	anchors.bottom: parent.bottom
+	anchors.left: parent.left
+	anchors.right: parent.right
+	height: parent.height / 2
+	color: parent.color
+  }*/
 
   Qaterial.LabelHeadline4
   {
-    leftPadding: 20
-    anchors.verticalCenter: parent.verticalCenter
-    text: root.text
-    color: Qaterial.Style.textColorDark
+	leftPadding: 20
+	anchors.verticalCenter: parent.verticalCenter
+	text: root.text
+	color: Qaterial.Colors.black //Qaterial.Style.textColorDark
   }
+
+	Qaterial.AppBarButton {
+		id: todayButton
+		icon.source: Qaterial.Icons.calendar
+		icon.color: Qaterial.Colors.black
+		anchors.verticalCenter: parent.verticalCenter
+		anchors.right: parent.right
+	}
 }

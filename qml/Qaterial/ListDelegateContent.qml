@@ -9,6 +9,7 @@ import QtGraphicalEffects 1.12
 
 // Qaterial
 import Qaterial 1.0 as Qaterial
+import "." as Qaterial
 
 Rectangle
 {
@@ -18,6 +19,10 @@ Rectangle
   property alias text: _text.text
   property alias overlineText: _text.overlineText
   property alias secondaryText: _text.secondaryText
+
+  property alias textColor: _text.textColor
+  property alias overlineColor: _text.overlineColor
+  property alias secondaryTextColor: _text.secondaryTextColor
 
   // THUMBNAIL
   property string roundSource
@@ -49,6 +54,8 @@ Rectangle
   property bool mirrored: false
   property double spacing: 0
 
+  property alias elide: _text.elide
+
   property double padding
   property double leftPadding: padding
   property double rightPadding: padding
@@ -63,8 +70,8 @@ Rectangle
   // Qaterial.Style.DelegateType.Default | Qaterial.Style.DelegateType.Overline | Qaterial.Style.DelegateType.Icon
   // Qaterial.Style.DelegateType.Round | Qaterial.Style.DelegateType.Square | Qaterial.Style.DelegateType.Large
   readonly property int type: (icon.source != "") ? (roundIcon ? Qaterial.Style.DelegateType.RoundIcon : Qaterial.Style
-    .DelegateType.Icon) : overlineText != "" ? Qaterial.Style.DelegateType.Overline : (roundSourceSet ||
-    squareSourceSet) ? (largeThumbnail ? Qaterial.Style.DelegateType.Square : Qaterial.Style.DelegateType.Round) : largeSourceSet ? Qaterial.Style.DelegateType.Large : Qaterial.Style.DelegateType.Default
+	.DelegateType.Icon) : overlineText != "" ? Qaterial.Style.DelegateType.Overline : (roundSourceSet ||
+	squareSourceSet) ? (largeThumbnail ? Qaterial.Style.DelegateType.Square : Qaterial.Style.DelegateType.Round) : largeSourceSet ? Qaterial.Style.DelegateType.Large : Qaterial.Style.DelegateType.Default
 
   property alias imageSourceSize: _image.sourceSize
 
@@ -74,8 +81,8 @@ Rectangle
 
   function reanchors()
   {
-    _icon.reanchors()
-    _virtualImage.reanchors()
+	_icon.reanchors()
+	_virtualImage.reanchors()
   } // function reanchors()
 
   onMirroredChanged: reanchors()
@@ -84,120 +91,120 @@ Rectangle
 
   Qaterial.RoundColorIcon
   {
-    id: _icon
-    visible: source != ""
-    iconSize: Qaterial.Style.delegate.iconWidth
-    highlighted: true
-    enabled: _control.enabled
+	id: _icon
+	visible: source != ""
+	iconSize: Qaterial.Style.delegate.iconWidth
+	highlighted: true
+	enabled: _control.enabled
 
-    fill: true
-    width: roundIcon ? roundSize : iconSize
-    height: roundIcon ? roundSize : iconSize
+	fill: true
+	width: roundIcon ? roundSize : iconSize
+	height: roundIcon ? roundSize : iconSize
 
-    anchors.top: _control.top
-    anchors.topMargin: Qaterial.Style.delegate.topPadding(_control.type, _control.lines)
-    anchors.left: _control.left
+	anchors.top: _control.top
+	anchors.topMargin: Qaterial.Style.delegate.topPadding(_control.type, _control.lines)
+	anchors.left: _control.left
 
-    function reanchors()
-    {
-      anchors.left = undefined
-      anchors.right = undefined
-      if(mirrored)
-        anchors.right = _control.right
-      else
-        anchors.left = _control.left
-    } // function reanchors()
+	function reanchors()
+	{
+	  anchors.left = undefined
+	  anchors.right = undefined
+	  if(mirrored)
+		anchors.right = _control.right
+	  else
+		anchors.left = _control.left
+	} // function reanchors()
 
-    Qaterial.DebugRectangle
-    {
-      anchors.fill: parent
-      border.color: "orange"
-      visible: _control.drawline
-    } // DebugRectangle
+	Qaterial.DebugRectangle
+	{
+	  anchors.fill: parent
+	  border.color: "orange"
+	  visible: _control.drawline
+	} // DebugRectangle
   } // RoundColorIcon
 
   Item
   {
-    id: _virtualImage
-    enabled: _control.enabled
-    visible: _control.roundSourceSet || _control.squareSourceSet || _control.largeSourceSet
-    width: _control.roundSourceSet ? Qaterial.Style.delegate.roundWidth(_control.largeThumbnail) : _control
-      .squareSourceSet ? Qaterial.Style.delegate.squareWidth(_control.largeThumbnail) : _control.largeSourceSet ?
-      Qaterial.Style.delegate.largeWidth() : 0
-    height: _control.roundSourceSet ? Qaterial.Style.delegate.roundWidth(_control.largeThumbnail) : _control
-      .squareSourceSet ? Qaterial.Style.delegate.squareWidth(_control.largeThumbnail) : _control.largeSourceSet ?
-      Qaterial.Style.delegate.largeHeight() : 0
+	id: _virtualImage
+	enabled: _control.enabled
+	visible: _control.roundSourceSet || _control.squareSourceSet || _control.largeSourceSet
+	width: _control.roundSourceSet ? Qaterial.Style.delegate.roundWidth(_control.largeThumbnail) : _control
+	  .squareSourceSet ? Qaterial.Style.delegate.squareWidth(_control.largeThumbnail) : _control.largeSourceSet ?
+	  Qaterial.Style.delegate.largeWidth() : 0
+	height: _control.roundSourceSet ? Qaterial.Style.delegate.roundWidth(_control.largeThumbnail) : _control
+	  .squareSourceSet ? Qaterial.Style.delegate.squareWidth(_control.largeThumbnail) : _control.largeSourceSet ?
+	  Qaterial.Style.delegate.largeHeight() : 0
 
-    anchors.top: _control.top
-    anchors.topMargin: Qaterial.Style.delegate.topPadding(_control.type, _control.lines)
-    anchors.left: _control.left
+	anchors.top: _control.top
+	anchors.topMargin: Qaterial.Style.delegate.topPadding(_control.type, _control.lines)
+	anchors.left: _control.left
 
-    function reanchors()
-    {
-      anchors.left = undefined
-      anchors.right = undefined
-      if(mirrored)
-        anchors.right = _control.right
-      else
-        anchors.left = _control.left
-    } //function reanchors()
+	function reanchors()
+	{
+	  anchors.left = undefined
+	  anchors.right = undefined
+	  if(mirrored)
+		anchors.right = _control.right
+	  else
+		anchors.left = _control.left
+	} //function reanchors()
 
-    Image
-    {
-      id: _image
-      fillMode: Image.PreserveAspectCrop
-      width: parent.width
-      height: parent.height
-      anchors.centerIn: parent
-      source: _control.roundSourceSet ? _control.roundSource : _control.squareSourceSet ? _control.squareSource : _control.largeSource
+	Image
+	{
+	  id: _image
+	  fillMode: Image.PreserveAspectCrop
+	  width: parent.width
+	  height: parent.height
+	  anchors.centerIn: parent
+	  source: _control.roundSourceSet ? _control.roundSource : _control.squareSourceSet ? _control.squareSource : _control.largeSource
 
-      sourceSize.width: width
-      sourceSize.height: height
+	  sourceSize.width: width
+	  sourceSize.height: height
 
-      layer.enabled: _control.roundSourceSet
-      layer.effect: OpacityMask
-      {
-        maskSource: Rectangle
-        {
-          width: _image.width
-          height: _image.height
-          radius: _image.width / 2
-        } // Rectangle
-      } // OpacityMask
-    } // Image
+	  layer.enabled: _control.roundSourceSet
+	  layer.effect: OpacityMask
+	  {
+		maskSource: Rectangle
+		{
+		  width: _image.width
+		  height: _image.height
+		  radius: _image.width / 2
+		} // Rectangle
+	  } // OpacityMask
+	} // Image
 
-    Qaterial.DebugRectangle
-    {
-      anchors.fill: parent
-      border.color: "orange"
-      visible: _control.drawline
-    } // DebugRectangle
+	Qaterial.DebugRectangle
+	{
+	  anchors.fill: parent
+	  border.color: "orange"
+	  visible: _control.drawline
+	} // DebugRectangle
   } // Item
 
   Qaterial.ListDelegateText
   {
-    id: _text
-    enabled: _control.enabled
-    alignTextRight: _control.alignTextRight
-    type: _control.type
-    drawline: _control.drawline
-    onPrimary: _control.onPrimary
-    colorReversed: _control.colorReversed
-    anchors.top: _control.top
-    anchors.bottom: _control.bottom
-    anchors.left: mirrored ? _control.left : (_icon.source != "" ? _icon.right : _image.source != "" ? _virtualImage
-      .right : _control.left)
-    anchors.right: mirrored ? (_icon.source != "" ? _icon.left : _image.source != "" ? _virtualImage.left : _control
-      .right) : _control.right
-    anchors.leftMargin: !mirrored ? _control.spacing : _control.leftPadding
-    anchors.rightMargin: mirrored ? _control.spacing : _control.rightPadding
-    mirrored: _control.mirrored
+	id: _text
+	enabled: _control.enabled
+	alignTextRight: _control.alignTextRight
+	type: _control.type
+	drawline: _control.drawline
+	onPrimary: _control.onPrimary
+	colorReversed: _control.colorReversed
+	anchors.top: _control.top
+	anchors.bottom: _control.bottom
+	anchors.left: mirrored ? _control.left : (_icon.source != "" ? _icon.right : _image.source != "" ? _virtualImage
+	  .right : _control.left)
+	anchors.right: mirrored ? (_icon.source != "" ? _icon.left : _image.source != "" ? _virtualImage.left : _control
+	  .right) : _control.right
+	anchors.leftMargin: !mirrored ? _control.spacing : _control.leftPadding
+	anchors.rightMargin: mirrored ? _control.spacing : _control.rightPadding
+	mirrored: _control.mirrored
   } // ListDelegateText
 
   Qaterial.DebugRectangle
   {
-    anchors.fill: parent
-    border.color: "red"
-    visible: _control.drawline
+	anchors.fill: parent
+	border.color: "red"
+	visible: _control.drawline
   } // DebugRectangle
 } // Rectangle

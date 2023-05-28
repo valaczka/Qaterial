@@ -37,6 +37,8 @@ CardSupportingText 1.0 CardSupportingText.qml
 CardTitle 1.0 CardTitle.qml
 CheckButton 1.0 CheckButton.qml
 CheckDelegate 1.0 CheckDelegate.qml
+CheckDialog 1.0 CheckDialog.qml
+CheckDialogDelegate 1.0 CheckDialogDelegate.qml
 CheckIndicator 1.0 CheckIndicator.qml
 CheckableListView 1.0 CheckableListView.qml
 CheckableListViewDelegate 1.0 CheckableListViewDelegate.qml
@@ -99,6 +101,7 @@ FluidGrid 1.0 FluidGrid.qml
 FolderTreeView 1.0 FolderTreeView.qml
 FolderTreeViewItem 1.0 FolderTreeViewItem.qml
 Frame 1.0 Frame.qml
+FullLoaderItemDelegate 1.0 FullLoaderItemDelegate.qml
 GradientSlider 1.0 GradientSlider.qml
 Grid 1.0 Grid.qml
 GridLabelsX 1.0 GridLabelsX.qml
@@ -115,6 +118,7 @@ HsvColorValueSlider 1.0 HsvColorValueSlider.qml
 Icon 1.0 Icon.qml
 IconLabel 1.0 IconLabel.qml
 IconLabelWithCaption 1.0 IconLabelWithCaption.qml
+singleton Icons 1.0 Icons.qml
 ImageLabel 1.0 ImageLabel.qml
 ItemDelegate 1.0 ItemDelegate.qml
 Label 1.0 Label.qml
@@ -140,8 +144,12 @@ LatoTabButton 1.0 LatoTabButton.qml
 LineChart 1.0 LineChart.qml
 ListDelegateBackground 1.0 ListDelegateBackground.qml
 ListDelegateContent 1.0 ListDelegateContent.qml
+ListDelegateFullLoaderContent 1.0 ListDelegateFullLoaderContent.qml
+ListDelegateLoaderContent 1.0 ListDelegateLoaderContent.qml
 ListDelegateText 1.0 ListDelegateText.qml
+ListDialog 1.0 ListDialog.qml
 ListSectionTitle 1.0 ListSectionTitle.qml
+LoaderItemDelegate 1.0 LoaderItemDelegate.qml
 MaterialColorPalette 1.0 MaterialColorPalette.qml
 Menu 1.0 Menu.qml
 MenuBar 1.0 MenuBar.qml

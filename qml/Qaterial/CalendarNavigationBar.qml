@@ -1,6 +1,7 @@
-import QtQuick 2.12
+import QtQuick 2.15
 
 import Qaterial 1.0 as Qaterial
+import "." as Qaterial
 
 Item
 {
@@ -21,60 +22,63 @@ Item
 
   Qaterial.AppBarButton
   {
-    id: _previousMonthButton
+	id: _previousMonthButton
 
-    anchors.verticalCenter: parent.verticalCenter
-    anchors.left: parent.left
+	anchors.verticalCenter: parent.verticalCenter
+	anchors.left: parent.left
 
-    enabled: root.previousMonthEnabled
-    icon.source: Qaterial.Icons.chevronLeft
+	enabled: root.previousMonthEnabled
+	icon.source: Qaterial.Icons.chevronLeft
 
-    onClicked: () => root.previousMonth()
+	onClicked: () => root.previousMonth()
   }
 
   Row
   {
-    id: _rowMonthYear
-    anchors.centerIn: parent
-    Qaterial.FlatButton
-    {
-      id: _monthButton
-      text: `${Calendar.monthToString(root.month)}`
-      rightInset: 1
-      leftInset: 1
-      rightPadding: 0
-      leftPadding: 0
-      font: Qaterial.Style.textTheme.Body2
-      highlighted: false
-      backgroundImplicitWidth: 0
+	id: _rowMonthYear
+	anchors.centerIn: parent
 
-      onClicked: () => root.monthClicked()
-    }
+	spacing: 5
 
-    Qaterial.FlatButton
-    {
-      id: _yearButton
-      text: `${root.year}`
-      rightInset: 1
-      leftInset: 1
-      rightPadding: 0
-      leftPadding: 0
-      font: Qaterial.Style.textTheme.Body2
-      highlighted: false
-      backgroundImplicitWidth: 0
+	Qaterial.FlatButton
+	{
+	  id: _monthButton
+	  text: `${Calendar.monthToString(root.month)}`
+	  rightInset: 1
+	  leftInset: 1
+	  rightPadding: 0
+	  leftPadding: 0
+	  font: Qaterial.Style.textTheme.Body2
+	  highlighted: false
+	  backgroundImplicitWidth: 0
 
-      onClicked: () => root.yearClicked()
-    }
+	  onClicked: () => root.monthClicked()
+	}
+
+	Qaterial.FlatButton
+	{
+	  id: _yearButton
+	  text: `${root.year}`
+	  rightInset: 1
+	  leftInset: 1
+	  rightPadding: 0
+	  leftPadding: 0
+	  font: Qaterial.Style.textTheme.Body2
+	  highlighted: false
+	  backgroundImplicitWidth: 0
+
+	  onClicked: () => root.yearClicked()
+	}
   }
 
   Qaterial.AppBarButton
   {
-    anchors.verticalCenter: parent.verticalCenter
-    anchors.right: parent.right
+	anchors.verticalCenter: parent.verticalCenter
+	anchors.right: parent.right
 
-    enabled: root.nextMonthEnabled
-    icon.source: Qaterial.Icons.chevronRight
+	enabled: root.nextMonthEnabled
+	icon.source: Qaterial.Icons.chevronRight
 
-    onClicked: () => root.nextMonth()
+	onClicked: () => root.nextMonth()
   }
 }

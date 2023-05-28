@@ -25,6 +25,7 @@
 
 #include <Qaterial/Details/Export.hpp>
 #include <cstdint>
+#include <QString>
 
 namespace qaterial {
 
@@ -39,6 +40,7 @@ void QATERIAL_API_ registerQmlTypes(const char* uri = nullptr, const std::uint8_
  * It is true by default to be as plug and play as possible to use Qaterial.
  */
 void QATERIAL_API_ loadQmlResources(bool autoRegisterStyle = true);
+void QATERIAL_API_ setDefaultFontFamily(const QString &family);
 
 std::uint8_t QATERIAL_API_ versionMajor();
 std::uint8_t QATERIAL_API_ versionMinor();

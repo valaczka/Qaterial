@@ -9,6 +9,7 @@ import QtQuick.Controls 2.12
 
 // Qaterial
 import Qaterial 1.0 as Qaterial
+import "." as Qaterial
 
 Qaterial.TabBar
 {
@@ -20,21 +21,26 @@ Qaterial.TabBar
   property int maxElement: 5
   implicitWidth: width
 
+  property string textRole: "text"
+  property string iconRole: "source"
+
   leftPadding: !mirrored ? Qaterial.Style.tabBar.minLeftWidth : 0
   rightPadding: mirrored ? Qaterial.Style.tabBar.minLeftWidth : 0
 
+  clip: true
+
   Repeater
   {
-    id: _repeater
-    delegate: Qaterial.TabButton
-    {
-      width: Math.max(_root.minWidth, Math.min(_root.width / _root.maxElement, _root.maxWidth))
-      implicitWidth: width
-      display: _root.display
-      text: model.text ? model.text : ""
-      icon.source: model.source ? model.source : ""
-      onPrimary: _root.onPrimary
-      enabled: _root.enabled
-    } // TabButton
+	id: _repeater
+	delegate: Qaterial.TabButton
+	{
+	  width: Math.max(_root.minWidth, Math.min(_root.width / _root.maxElement, _root.maxWidth))
+	  implicitWidth: width
+	  display: _root.display
+	  text: model[textRole] ? model[textRole] : ""
+	  icon.source: model[iconRole] ? model[iconRole] : ""
+	  onPrimary: _root.onPrimary
+	  enabled: _root.enabled
+	} // TabButton
   } // Repeater
 } // TabBar

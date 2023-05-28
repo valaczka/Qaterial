@@ -10,6 +10,7 @@ import QtQuick.Controls 2.12
 
 // Qaterial
 import Qaterial 1.0 as Qaterial
+import "." as Qaterial
 
 /**
  * CONTENT
@@ -69,7 +70,7 @@ T.TextField
 
   property bool titleUp: _control.activeFocus || _control.length || _control.preeditText
   readonly property bool anyHintVisible: (_control.helperText != "" || _control._errorText != "") || _lineCountLabel
-    .visible
+	.visible
 
   property bool onPrimary: false
   property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
@@ -81,46 +82,46 @@ T.TextField
 
   Qaterial.DebugRectangle
   {
-    anchors.fill: parent
-    border.color: "pink"
-    visible: _control.drawline
+	anchors.fill: parent
+	border.color: "pink"
+	visible: _control.drawline
   } // DebugRectangle
 
   Qaterial.DebugRectangle
   {
-    x: _control.leftPadding
-    y: _control.topPadding
-    width: _control.width - _control.leftPadding - _control.rightPadding
-    height: _control.contentHeight
-    border.color: "orange"
-    visible: _control.drawline
+	x: _control.leftPadding
+	y: _control.topPadding
+	width: _control.width - _control.leftPadding - _control.rightPadding
+	height: _control.contentHeight
+	border.color: "orange"
+	visible: _control.drawline
   } // DebugRectangle
 
   Qaterial.DebugRectangle
   {
-    x: _control.leftPadding
-    y: _control.topPadding
-    width: Math.min(_control.contentWidth, _control.width - _control.leftPadding - _control.rightPadding)
-    height: _control.contentHeight
-    border.color: "red"
-    visible: _control.drawline
+	x: _control.leftPadding
+	y: _control.topPadding
+	width: Math.min(_control.contentWidth, _control.width - _control.leftPadding - _control.rightPadding)
+	height: _control.contentHeight
+	border.color: "red"
+	visible: _control.drawline
   } // DebugRectangle
 
   // SIZE
   implicitWidth: implicitBackgroundWidth + leftInset + rightInset ||
-    Math.max(contentWidth, placeholder.implicitWidth) + _control.virtualLeftPadding + _control.virtualRightPadding
+	Math.max(contentWidth, placeholder.implicitWidth) + _control.virtualLeftPadding + _control.virtualRightPadding
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-    contentHeight + topPadding + bottomPadding,
-    placeholder.implicitHeight + topPadding + bottomPadding)
+	contentHeight + topPadding + bottomPadding,
+	placeholder.implicitHeight + topPadding + bottomPadding)
 
   topPadding: _control.title != "" ? Qaterial.Style.textField.topPaddingTitle : Qaterial.Style.textField.topPadding
   bottomPadding: anyHintVisible ? Qaterial.Style.textField.bottomPaddingHint : Qaterial.Style.textField.bottomPadding
 
   property double virtualLeftPadding: ((leadingIconVisible) ? _leadingIcon.width + leadingSpacing : 0) + ((
-    leadingIconVisible && !leadingIconInline) ? Qaterial.Style.textField.horizontalPadding : 0)
+	leadingIconVisible && !leadingIconInline) ? Qaterial.Style.textField.horizontalPadding : 0)
 
   property double virtualRightPadding: ((trailingVisible) ? _trailingContent.width + trailingSpacing : 0) + ((
-    trailingVisible && !trailingInline) ? Qaterial.Style.textField.horizontalPadding : 0)
+	trailingVisible && !trailingInline) ? Qaterial.Style.textField.horizontalPadding : 0)
 
   leftPadding: virtualLeftPadding + (prefixText != "" ? _prefixLabel.contentWidth + textSpacing : 0)
   rightPadding: virtualRightPadding + (suffixText != "" ? _suffixLabel.contentWidth + textSpacing : 0)
@@ -133,11 +134,11 @@ T.TextField
 
   Behavior on bottomPadding
   {
-    NumberAnimation
-    {
-      easing.type: Easing.OutCubic
-      duration: 200
-    } // NumberAnimation
+	NumberAnimation
+	{
+	  easing.type: Easing.OutCubic
+	  duration: 200
+	} // NumberAnimation
   } // Behavior
 
   // COLORS
@@ -149,13 +150,13 @@ T.TextField
   verticalAlignment: TextInput.AlignVCenter
 
   property color titleTextColor: enabled ? (errorState && titleUp ? Qaterial.Style.errorColor : Qaterial.Style
-    .hintTextColor()) : Qaterial.Style.dividersColor()
+	.hintTextColor()) : Qaterial.Style.dividersColor()
   property color helperTextColor: enabled ? (errorState ? Qaterial.Style.errorColor : Qaterial.Style
-    .hintTextColor()) : Qaterial.Style.dividersColor()
+	.hintTextColor()) : Qaterial.Style.dividersColor()
   property color prefixTextColor: enabled ? (Qaterial.Style.hintTextColor()) : Qaterial.Style.dividersColor()
   property color suffixTextColor: enabled ? (Qaterial.Style.hintTextColor()) : Qaterial.Style.dividersColor()
   property color leadingIconColor: enabled ? (activeFocus ? Qaterial.Style.accentColor : Qaterial.Style
-    .secondaryTextColor()) : Qaterial.Style.disabledTextColor()
+	.secondaryTextColor()) : Qaterial.Style.disabledTextColor()
 
   // BEHAVIOR
   selectByMouse: true
@@ -166,23 +167,23 @@ T.TextField
   // LEADING ICON
   Qaterial.ColorIcon
   {
-    id: _leadingIcon
-    color: _control.leadingIconColor
-    source: _control.leadingIconSource
-    iconSize: Qaterial.Style.textField.iconSize
-    width: Qaterial.Style.textField.iconWidth
-    height: Qaterial.Style.textField.iconWidth
-    y: Qaterial.Style.textField.topPadding
+	id: _leadingIcon
+	color: _control.leadingIconColor
+	source: _control.leadingIconSource
+	iconSize: Qaterial.Style.textField.iconSize
+	width: Qaterial.Style.textField.iconWidth
+	height: Qaterial.Style.textField.iconWidth
+	y: Math.max(Qaterial.Style.textField.topPadding, (_control.height-height)/2)
 
-    opacity: _control.leadingIconVisible ? color.a : 0.0
-    Behavior on opacity
-    {
-      NumberAnimation
-      {
-        easing.type: Easing.OutCubic
-        duration: 200
-      } // NumberAnimation
-    } // Behavior
+	opacity: _control.leadingIconVisible ? color.a : 0.0
+	Behavior on opacity
+	{
+	  NumberAnimation
+	  {
+		easing.type: Easing.OutCubic
+		duration: 200
+	  } // NumberAnimation
+	} // Behavior
   } // ColorIcon
 
   // trailing ICON
@@ -191,69 +192,70 @@ T.TextField
 
   Loader
   {
-    id: _trailingContent
-    y: _control.title != "" ? Qaterial.Style.textField.topPadding : 0
-    x: _control.width - width
-    opacity: _control.trailingVisible ? color.a : 0.0
-    onSourceComponentChanged:
-    {
-      if(item && ((typeof item.textField) == "object"))
-      {
-        item.textField = _control
-      }
-    }
+	id: _trailingContent
+	//y: Math.max(_control.title != "" ? Qaterial.Style.textField.topPadding : 0, (_control.height-height)/2)
+	y: _control.title != "" ? Qaterial.Style.textField.topPadding : 0
+	x: _control.width - width
+	opacity: _control.trailingVisible ? color.a : 0.0
+	onSourceComponentChanged:
+	{
+	  if(item && ((typeof item.textField) == "object"))
+	  {
+		item.textField = _control
+	  }
+	}
 
-    Behavior on opacity
-    {
-      NumberAnimation
-      {
-        easing.type: Easing.OutCubic
-        duration: 200
-      } // NumberAnimation
-    } // Behavior
+	Behavior on opacity
+	{
+	  NumberAnimation
+	  {
+		easing.type: Easing.OutCubic
+		duration: 200
+	  } // NumberAnimation
+	} // Behavior
   } // Loader
 
   // TITLE
   Qaterial.Label
   {
-    id: _titleLabel
-    visible: _control.title != ""
-    text: _control.title
+	id: _titleLabel
+	visible: _control.title != ""
+	text: _control.title
 
-    Qaterial.DebugRectangle
-    {
-      anchors.fill: parent
-      border.color: "violet"
-      visible: _control.drawline
-    } // DebugRectangle
+	Qaterial.DebugRectangle
+	{
+	  anchors.fill: parent
+	  border.color: "violet"
+	  visible: _control.drawline
+	} // DebugRectangle
 
-    font: _control.titleUp ? Qaterial.Style.textTheme.caption : _control.font
-    color: _control.titleTextColor
-    x: _control.virtualLeftPadding
-    y: titleUp ? Qaterial.Style.textField.topPaddingTitleOffset : _control.topPadding
-    width: _control.width - _control.virtualLeftPadding - _control.virtualRightPadding
-    verticalAlignment: _control.verticalAlignment
-    horizontalAlignment: _control.horizontalAlignment
-    renderType: _control.renderType
-    elide: Text.ElideRight
+	font: _control.titleUp ? Qaterial.Style.textTheme.caption : _control.font
+	color: _control.titleTextColor
+	x: _control.virtualLeftPadding
+	y: titleUp ? Qaterial.Style.textField.topPaddingTitleOffset : _control.topPadding
+	width: _control.width - _control.virtualLeftPadding - _control.virtualRightPadding
+	verticalAlignment: _control.verticalAlignment
+	horizontalAlignment: _control.horizontalAlignment
+	renderType: _control.renderType
+	elide: Text.ElideRight
 
-    Behavior on y
-    {
-      NumberAnimation
-      {
-        easing.type: Easing.OutCubic;
-        duration: 200
-      } // NumberAnimation
-    } // Behavior y
+	Behavior on y
+	{
+	  NumberAnimation
+	  {
+		easing.type: Easing.OutCubic;
+		duration: 200
+	  } // NumberAnimation
+	} // Behavior y
 
-    Behavior on color
-    {
-      ColorAnimation
-      {
-        easing.type: Easing.OutCubic;
-        duration: 200
-      } // ColorAnimation
-    } // Behavior color
+	Behavior on color
+	{
+	  ColorAnimation
+	  {
+		easing.type: Easing.OutCubic;
+		duration: 200
+	  } // ColorAnimation
+	} // Behavior color
   } // Label
 
   // HELPER TEXT
@@ -266,181 +268,181 @@ T.TextField
   onErrorChanged: if(editedAtLeastOnce && autoSubmit) Qt.callLater(submitInput)
   onTextEdited:
   {
-    editedAtLeastOnce = true
-    if(autoSubmit)
-      Qt.callLater(submitInput)
+	editedAtLeastOnce = true
+	if(autoSubmit)
+	  Qt.callLater(submitInput)
   }
   ErrorSequentialAnimation { id: _errorAnimation;target: _titleLabel;x: _control.virtualLeftPadding }
   ErrorSequentialAnimation { id: _errorLeadingAnimation;target: _leadingIcon;x: _control.width - _leadingIcon.width }
 
   function submitInput()
   {
-    if(!error)
-      clearError()
-    else
-      setError(errorText)
+	if(!error)
+	  clearError()
+	else
+	  setError(errorText)
   } // function submitInput()
 
   function clearError()
   {
-    if(errorState)
-      _errorText = ""
+	if(errorState)
+	  _errorText = ""
   } // function clearError()
 
   function setError(s)
   {
-    if(!errorState)
-    {
-      if(titleUp)
-        _errorAnimation.start()
-      if(leadingIconErrorAnimation)
-        _errorLeadingAnimation.start()
-      _errorText = s ? s : " "
-      if(!s)
-        console.log("Error: No Error text provided, please provide errorText property to guide your user")
-    }
+	if(!errorState)
+	{
+	  if(titleUp)
+		_errorAnimation.start()
+	  if(leadingIconErrorAnimation)
+		_errorLeadingAnimation.start()
+	  _errorText = s ? s : " "
+	  if(!s)
+		console.log("Error: No Error text provided, please provide errorText property to guide your user")
+	}
   } // function setError(s)
 
   Qaterial.LabelHint1 // Hint
   {
-    opacity: (_control.helperText != "" || _control._errorText != "") ? 1.0 : 0.0
-    Behavior on opacity
-    {
-      NumberAnimation
-      {
-        easing.type: Easing.OutCubic;
-        duration: 100
-      }
-    }
-    text: _control.errorState ? _control._errorText : _control.helperText
+	opacity: (_control.helperText != "" || _control._errorText != "") ? 1.0 : 0.0
+	Behavior on opacity
+	{
+	  NumberAnimation
+	  {
+		easing.type: Easing.OutCubic;
+		duration: 100
+	  }
+	}
+	text: _control.errorState ? _control._errorText : _control.helperText
 
-    Qaterial.DebugRectangle
-    {
-      anchors.fill: parent
-      border.color: "violet"
-      visible: _control.drawline
-    } // DebugRectangle
+	Qaterial.DebugRectangle
+	{
+	  anchors.fill: parent
+	  border.color: "violet"
+	  visible: _control.drawline
+	} // DebugRectangle
 
-    color: _control.helperTextColor
-    width: _control.width - _control.virtualLeftPadding - _control.virtualRightPadding - _lineCountLabel.width
-    x: _control.virtualLeftPadding
-    y: _control.height - height - Qaterial.Style.textField.bottomPaddingHintOffset
-    verticalAlignment: _control.verticalAlignment
-    renderType: _control.renderType
-    elide: Text.ElideRight
+	color: _control.helperTextColor
+	width: _control.width - _control.virtualLeftPadding - _control.virtualRightPadding - _lineCountLabel.width
+	x: _control.virtualLeftPadding
+	y: _control.height - height - Qaterial.Style.textField.bottomPaddingHintOffset
+	verticalAlignment: _control.verticalAlignment
+	renderType: _control.renderType
+	elide: Text.ElideRight
   } // Label
 
   property int maximumLengthCount: maximumLength
 
   Qaterial.LabelHint1 // LineCounter
   {
-    id: _lineCountLabel
-    visible: _control.maximumLengthCount > 0 && _control.maximumLengthCount < 32767
-    text: _control.length + "/" + _control.maximumLengthCount
+	id: _lineCountLabel
+	visible: _control.maximumLengthCount > 0 && _control.maximumLengthCount < 32767
+	text: _control.length + "/" + _control.maximumLengthCount
 
-    Qaterial.DebugRectangle
-    {
-      anchors.fill: parent
-      border.color: "violet"
-      visible: _control.drawline
-    } // DebugRectangle
+	Qaterial.DebugRectangle
+	{
+	  anchors.fill: parent
+	  border.color: "violet"
+	  visible: _control.drawline
+	} // DebugRectangle
 
-    color: _control.helperTextColor
-    x: _control.width - width - (_control.trailingInline ? 0 : _control.virtualRightPadding)
-    y: _control.height - height - Qaterial.Style.textField.bottomPaddingHintOffset
-    verticalAlignment: _control.verticalAlignment
-    renderType: _control.renderType
+	color: _control.helperTextColor
+	x: _control.width - width - (_control.trailingInline ? 0 : _control.virtualRightPadding)
+	y: _control.height - height - Qaterial.Style.textField.bottomPaddingHintOffset
+	verticalAlignment: _control.verticalAlignment
+	renderType: _control.renderType
   } // Label
 
   Qaterial.Label // Prefix Label
   {
-    id: _prefixLabel
+	id: _prefixLabel
 
-    Qaterial.DebugRectangle
-    {
-      anchors.fill: parent
-      border.color: "violet"
-      visible: _control.drawline
-    } // DebugRectangle
+	Qaterial.DebugRectangle
+	{
+	  anchors.fill: parent
+	  border.color: "violet"
+	  visible: _control.drawline
+	} // DebugRectangle
 
-    height: _control.contentHeight
-    x: _control.virtualLeftPadding
-    y: _control.topPadding
-    text: _control.prefixText
-    color: _control.prefixTextColor
-    font: _control.font
-    verticalAlignment: _control.verticalAlignment
-    renderType: _control.renderType
-    opacity: (_control.prefixText != "" && _control.activeFocus || _control.length) ? 1.0 : 0.0
+	height: _control.contentHeight
+	x: _control.virtualLeftPadding
+	y: _control.topPadding
+	text: _control.prefixText
+	color: _control.prefixTextColor
+	font: _control.font
+	verticalAlignment: _control.verticalAlignment
+	renderType: _control.renderType
+	opacity: (_control.prefixText != "" && _control.activeFocus || _control.length) ? 1.0 : 0.0
 
-    Behavior on opacity
-    {
-      NumberAnimation
-      {
-        easing.type: Easing.OutCubic
-        duration: 200
-      } // NumberAnimation
-    } // Behavior
+	Behavior on opacity
+	{
+	  NumberAnimation
+	  {
+		easing.type: Easing.OutCubic
+		duration: 200
+	  } // NumberAnimation
+	} // Behavior
   } // Label
 
   Qaterial.Label // Suffix Label
   {
-    id: _suffixLabel
+	id: _suffixLabel
 
-    Qaterial.DebugRectangle
-    {
-      anchors.fill: parent
-      border.color: "violet"
-      visible: _control.drawline
-    } // DebugRectangle
+	Qaterial.DebugRectangle
+	{
+	  anchors.fill: parent
+	  border.color: "violet"
+	  visible: _control.drawline
+	} // DebugRectangle
 
-    height: _control.contentHeight
-    x: _control.width - width - _control.virtualRightPadding
-    y: _control.topPadding
-    font: _control.font
-    text: _control.suffixText
-    color: _control.suffixTextColor
-    verticalAlignment: _control.verticalAlignment
-    renderType: _control.renderType
-    opacity: (_control.suffixText != "" && _control.activeFocus || _control.length) ? 1.0 : 0.0
+	height: _control.contentHeight
+	x: _control.width - width - _control.virtualRightPadding
+	y: _control.topPadding
+	font: _control.font
+	text: _control.suffixText
+	color: _control.suffixTextColor
+	verticalAlignment: _control.verticalAlignment
+	renderType: _control.renderType
+	opacity: (_control.suffixText != "" && _control.activeFocus || _control.length) ? 1.0 : 0.0
 
-    Behavior on opacity
-    {
-      NumberAnimation
-      {
-        easing.type: Easing.OutCubic
-        duration: 200
-      } // NumberAnimation
-    } // Behavior
+	Behavior on opacity
+	{
+	  NumberAnimation
+	  {
+		easing.type: Easing.OutCubic
+		duration: 200
+	  } // NumberAnimation
+	} // Behavior
   } // Label
 
   // PLACEHOLDER
   Qaterial.PlaceholderText
   {
-    id: placeholder
-    x: _control.leftPadding
-    y: _control.topPadding
-    width: _control.width - (_control.leftPadding + _control.rightPadding)
-    height: _control.height - (_control.topPadding + _control.bottomPadding)
-    text: _control.placeholderText
-    color: _control.placeholderTextColor
-    font: _control.font
-    verticalAlignment: _control.verticalAlignment
-    horizontalAlignment: _control.horizontalAlignment
-    elide: Text.ElideRight
-    renderType: _control.renderType
-    readonly property bool shouldBeVisible: (_control.title == "" || _control.activeFocus) && !_control.length && !
-      _control.preeditText && (!_control.activeFocus || _control.horizontalAlignment !== Qt.AlignHCenter)
-    opacity: shouldBeVisible ? 1.0 : 0.0
+	id: placeholder
+	x: _control.leftPadding
+	y: _control.topPadding
+	width: _control.width - (_control.leftPadding + _control.rightPadding)
+	height: _control.height - (_control.topPadding + _control.bottomPadding)
+	text: _control.placeholderText
+	color: _control.placeholderTextColor
+	font: _control.font
+	verticalAlignment: _control.verticalAlignment
+	horizontalAlignment: _control.horizontalAlignment
+	elide: Text.ElideRight
+	renderType: _control.renderType
+	readonly property bool shouldBeVisible: (_control.title == "" || _control.activeFocus) && !_control.length && !
+	  _control.preeditText && (!_control.activeFocus || _control.horizontalAlignment !== Qt.AlignHCenter)
+	opacity: shouldBeVisible ? 1.0 : 0.0
 
-    Behavior on opacity
-    {
-      NumberAnimation
-      {
-        easing.type: Easing.InQuad
-        duration: placeholder.shouldBeVisible ? 50 : 200
-      } // NumberAnimation
-    } // Behavior
+	Behavior on opacity
+	{
+	  NumberAnimation
+	  {
+		easing.type: Easing.InQuad
+		duration: placeholder.shouldBeVisible ? 50 : 200
+	  } // NumberAnimation
+	} // Behavior
   } // PlaceholderText
 
   // BACKGROUND
@@ -450,52 +452,52 @@ T.TextField
 
   background: Rectangle
   {
-    y: _control.height - height - _control.bottomPadding + 8
-    implicitWidth: Qaterial.Style.textField.implicitWidth
-    width: parent.width
-    height: _control.activeFocus || _control.hovered ? _control.backgroundBorderHeight : 1
-    color: _control.backgroundColor
+	y: _control.height - height - _control.bottomPadding + 8
+	implicitWidth: Qaterial.Style.textField.implicitWidth
+	width: parent.width
+	height: _control.activeFocus || _control.hovered ? _control.backgroundBorderHeight : 1
+	color: _control.backgroundColor
 
-    Qaterial.DebugRectangle
-    {
-      anchors.fill: parent
-      border.color: "blue"
-      visible: _control.drawline
-    } // DebugRectangle
+	Qaterial.DebugRectangle
+	{
+	  anchors.fill: parent
+	  border.color: "blue"
+	  visible: _control.drawline
+	} // DebugRectangle
 
-    Rectangle
-    {
-      height: _control.backgroundBorderHeight
-      color: _control.backgroundHighlightColor
-      width: _control.activeFocus ? parent.width : 0
-      x: _control.activeFocus ? 0 : parent.width / 2
+	Rectangle
+	{
+	  height: _control.backgroundBorderHeight
+	  color: _control.backgroundHighlightColor
+	  width: _control.activeFocus ? parent.width : 0
+	  x: _control.activeFocus ? 0 : parent.width / 2
 
-      Behavior on width
-      {
-        enabled: !_control.activeFocus
-        NumberAnimation
-        {
-          easing.type: Easing.OutCubic;
-          duration: 300
-        } // NumberAnimation
-      } // Behavior
+	  Behavior on width
+	  {
+		enabled: !_control.activeFocus
+		NumberAnimation
+		{
+		  easing.type: Easing.OutCubic;
+		  duration: 300
+		} // NumberAnimation
+	  } // Behavior
 
-      Behavior on x
-      {
-        enabled: !_control.activeFocus
-        NumberAnimation
-        {
-          easing.type: Easing.OutCubic;
-          duration: 300
-        } // NumberAnimation
-      } // Behavior
+	  Behavior on x
+	  {
+		enabled: !_control.activeFocus
+		NumberAnimation
+		{
+		  easing.type: Easing.OutCubic;
+		  duration: 300
+		} // NumberAnimation
+	  } // Behavior
 
-      Qaterial.DebugRectangle
-      {
-        anchors.fill: parent
-        border.color: "red"
-        visible: _control.drawline
-      } // DebugRectangle
-    } // Rectangle
+	  Qaterial.DebugRectangle
+	  {
+		anchors.fill: parent
+		border.color: "red"
+		visible: _control.drawline
+	  } // DebugRectangle
+	} // Rectangle
   } // Rectangle
 } // TextField

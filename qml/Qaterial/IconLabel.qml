@@ -23,6 +23,7 @@
 import QtQuick 2.15
 import QtQml 2.15
 import Qaterial 1.0 as Qaterial
+import "." as Qaterial
 
 Qaterial.IconLabelImpl
 {
@@ -30,10 +31,10 @@ Qaterial.IconLabelImpl
 
   enum Display
   {
-    IconOnly,
-    TextOnly,
-    TextBesideIcon,
-    TextUnderIcon
+	IconOnly,
+	TextOnly,
+	TextBesideIcon,
+	TextUnderIcon
   }
 
   property string text
@@ -55,20 +56,22 @@ Qaterial.IconLabelImpl
 
   iconItem: Qaterial.Icon
   {
-    icon: root.icon.source
-    implicitWidth: icon.toString() ? root.icon.width : 0
-    implicitHeight: icon.toString() ? root.icon.height : 0
-    color: root.icon.color
-    cached: root.icon.cache
+	icon: root.icon.source
+	implicitWidth: icon.toString() ? root.icon.width : 0
+	implicitHeight: icon.toString() ? root.icon.height : 0
+	color: root.icon.color
+	cached: root.icon.cache
   }
 
   labelItem: Qaterial.Label
   {
-    text: root.text
-    font: root.font
-    color: root.color
-    elide: root.elide
-    wrapMode: root.wrapMode
-    maximumLineCount: root.maximumLineCount
+	text: root.text
+	font: root.font
+	color: root.color
+	elide: root.elide
+	wrapMode: root.wrapMode
+	maximumLineCount: root.maximumLineCount
+	/***** VJP ******/
+	horizontalAlignment: root.horizontalAlignment
   }
 }

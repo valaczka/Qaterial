@@ -8,6 +8,7 @@ import QtQuick 2.12
 
 // Qaterial
 import Qaterial 1.0 as Qaterial
+import "." as Qaterial
 
 Rectangle
 {
@@ -31,16 +32,20 @@ Rectangle
   property bool onPrimary: false
   property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
 
+  property color overlineColor: textColor
+  property color textColor: enabled ? Qaterial.Style.colorTheme.primaryText : Qaterial.Style.colorTheme.disabledText
+  property color secondaryTextColor: textColor
+
   readonly property int lines: (secondaryText != "" ? _info.lineCount : 0) + 1
   property int elide: mirrored ? Text.ElideLeft : Text.ElideRight
   property int textAligment: mirrored ? alignTextRight ? Text.AlignLeft : Text.AlignRight : alignTextRight ? Text
-    .AlignRight : Text.AlignLeft
+	.AlignRight : Text.AlignLeft
 
   Qaterial.DebugRectangle
   {
-    anchors.fill: parent
-    border.color: "red"
-    visible: _control.drawline
+	anchors.fill: parent
+	border.color: "red"
+	visible: _control.drawline
   } // DebugRectangle
 
   // Qaterial.Style.DelegateType.Default | Qaterial.Style.DelegateType.Overline | Qaterial.Style.DelegateType.Icon
@@ -54,7 +59,7 @@ Rectangle
 
   function reanchors()
   {
-    _text.reanchors()
+	_text.reanchors()
   } // function reanchors()
 
   onMirroredChanged: reanchors()
@@ -64,102 +69,109 @@ Rectangle
 
   Qaterial.LabelOverline
   {
-    id: _overline
-    visible: text != ""
-    enabled: _control.enabled
-    elide: _control.elide
-    onPrimary: _control.onPrimary
-    colorReversed: _control.colorReversed
+	id: _overline
+	visible: text != ""
+	enabled: _control.enabled
+	elide: _control.elide
+	onPrimary: _control.onPrimary
+	colorReversed: _control.colorReversed
+	color: _control.overlineColor
 
-    horizontalAlignment: _control.textAligment
+	horizontalAlignment: _control.textAligment
 
-    anchors.baseline: _control.top
-    anchors.baselineOffset: Qaterial.Style.delegate.baselineOffsetOverline(_control.lines)
-    anchors.left: _control.left
-    anchors.right: _control.right
-    anchors.leftMargin: _control.leftPadding
-    anchors.rightMargin: _control.rightPadding
+	anchors.baseline: _control.top
+	anchors.baselineOffset: Qaterial.Style.delegate.baselineOffsetOverline(_control.lines)
+	anchors.left: _control.left
+	anchors.right: _control.right
+	anchors.leftMargin: _control.leftPadding
+	anchors.rightMargin: _control.rightPadding
 
-    Qaterial.DebugRectangle
-    {
-      anchors.fill: parent
-      border.color: "orange"
-      visible: _control.drawline
-    } // DebugRectangle
+	Qaterial.DebugRectangle
+	{
+	  anchors.fill: parent
+	  border.color: "orange"
+	  visible: _control.drawline
+	} // DebugRectangle
   } // Label
 
   Qaterial.LabelBody1
   {
-    id: _text
-    visible: text != ""
-    enabled: _control.enabled
-    elide: _control.elide
-    onPrimary: _control.onPrimary
-    colorReversed: _control.colorReversed
+	id: _text
+	visible: text != ""
+	enabled: _control.enabled
+	elide: _control.elide
+	onPrimary: _control.onPrimary
+	colorReversed: _control.colorReversed
+	color: _control.textColor
 
-    horizontalAlignment: _control.textAligment
+	maximumLineCount: 1
 
-    readonly property bool centerBaseline: _control.secondaryText != "" || _control.overlineText != ""
+	horizontalAlignment: _control.textAligment
 
-    anchors.verticalCenter: _control.verticalCenter
-    anchors.baselineOffset: centerBaseline ? Qaterial.Style.delegate.baselineOffsetText(_control.type, _control.lines) : 0
-    anchors.left: _control.left
-    anchors.right: _control.right
-    anchors.leftMargin: _control.leftPadding
-    anchors.rightMargin: _control.rightPadding
+	readonly property bool centerBaseline: _control.secondaryText != "" || _control.overlineText != ""
 
-    function reanchors()
-    {
-      anchors.baseline = undefined
-      anchors.verticalCenter = undefined
+	anchors.verticalCenter: _control.verticalCenter
+	anchors.baselineOffset: centerBaseline ? Qaterial.Style.delegate.baselineOffsetText(_control.type, _control.lines) : 0
+	anchors.left: _control.left
+	anchors.right: _control.right
+	anchors.leftMargin: _control.leftPadding
+	anchors.rightMargin: _control.rightPadding
 
-      if(centerBaseline)
-        anchors.baseline = _control.top
-      else
-        anchors.verticalCenter = _control.verticalCenter
-    } // function reanchors()
+	function reanchors()
+	{
+	  anchors.baseline = undefined
+	  anchors.verticalCenter = undefined
 
-    Qaterial.DebugRectangle
-    {
-      anchors.fill: parent
-      border.color: "orange"
-      visible: _control.drawline
-    } // DebugRectangle
+	  if(centerBaseline)
+		anchors.baseline = _control.top
+	  else
+		anchors.verticalCenter = _control.verticalCenter
+	} // function reanchors()
+
+	Qaterial.DebugRectangle
+	{
+	  anchors.fill: parent
+	  border.color: "orange"
+	  visible: _control.drawline
+	} // DebugRectangle
   } // Label
 
   Qaterial.LabelBody2
   {
-    id: _info
-    visible: text != ""
-    enabled: _control.enabled
-    elide: _control.elide
-    maximumLineCount: 2
-    onPrimary: _control.onPrimary
-    colorReversed: _control.colorReversed
+	id: _info
+	visible: text != ""
+	enabled: _control.enabled
+	elide: _control.elide
+	maximumLineCount: 2
+	onPrimary: _control.onPrimary
+	colorReversed: _control.colorReversed
+	color: _control.secondaryTextColor
 
-    wrapMode: Text.WordWrap
-    horizontalAlignment: _control.textAligment
+	wrapMode: Text.WordWrap
+	horizontalAlignment: _control.textAligment
 
-    anchors.baseline: _control.top
-    anchors.baselineOffset: Qaterial.Style.delegate.baselineOffsetSecText(_control.type, lineCount + 1)
+	anchors.baseline: _control.top
+	anchors.baselineOffset: Qaterial.Style.delegate.baselineOffsetSecText(_control.type, lineCount + 1)
 
-    anchors.left: _control.left
-    anchors.right: _control.right
-    anchors.leftMargin: _control.leftPadding
-    anchors.rightMargin: _control.rightPadding
+	anchors.left: _control.left
+	anchors.right: _control.right
+	anchors.leftMargin: _control.leftPadding
+	anchors.rightMargin: _control.rightPadding
 
-    Qaterial.DebugRectangle
-    {
-      anchors.fill: parent
-      border.color: "orange"
-      visible: _control.drawline
-    } // DebugRectangle
+	lineHeight: 0.8
+
+	Qaterial.DebugRectangle
+	{
+	  anchors.fill: parent
+	  border.color: "orange"
+	  visible: _control.drawline
+	} // DebugRectangle
   } // Label
 
   Qaterial.DebugRectangle
   {
-    anchors.fill: parent
-    border.color: "red"
-    visible: _control.drawline
+	anchors.fill: parent
+	border.color: "red"
+	visible: _control.drawline
   } // DebugRectangle
 } // Rectangle

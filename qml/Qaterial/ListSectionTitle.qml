@@ -9,20 +9,30 @@ import QtQuick.Controls 2.12
 
 // Qaterial
 import Qaterial 1.0 as Qaterial
+import "." as Qaterial
 
 Qaterial.LabelOverline
 {
   id: _control
   property bool separatorVisible: false
 
+  width: ListView.view.width
+  text: section
+
+  background: Rectangle {
+	  color: Qaterial.Style.primaryColor
+  }
+
+  color: Qaterial.Style.iconColor()
+
   Qaterial.ToolSeparator
   {
-    id: _separator
-    width: parent.width
-    y: Math.floor(Qaterial.Style.card.horizontalPadding / 2)
-    verticalPadding: 0
-    orientation: Qt.Horizontal
-    visible: _control.separatorVisible
+	id: _separator
+	width: parent.width
+	y: Math.floor(Qaterial.Style.card.horizontalPadding / 2)
+	verticalPadding: 0
+	orientation: Qt.Horizontal
+	visible: _control.separatorVisible
   } // ToolSeparator
 
   padding: Qaterial.Style.card.horizontalPadding

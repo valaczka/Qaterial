@@ -9,17 +9,18 @@ import QtQml 2.14
 
 // Qaterial
 import Qaterial 1.0 as Qaterial
+import "." as Qaterial
 
 Item
 {
   id: root
 
   implicitWidth: vertical ?
-    (indicatorLeftPadding + indicatorWidth + indicatorRightPadding + contentItemWidth + contentItemHorizontalPadding) : (count * (contentItemWidth + 2 * contentItemHorizontalPadding))
+	(indicatorLeftPadding + indicatorWidth + indicatorRightPadding + contentItemWidth + contentItemHorizontalPadding) : (count * (contentItemWidth + 2 * contentItemHorizontalPadding))
   implicitHeight: vertical ?
-    (count * (indicatorTopPadding + indicatorHeight + indicatorBottomPadding + separatorHeight / 2)) : (
-      indicatorTopPadding + indicatorHeight + indicatorBottomPadding + contentItemHeight + 2 *
-      contentItemVerticalPadding)
+	(count * (indicatorTopPadding + indicatorHeight + indicatorBottomPadding + separatorHeight / 2)) : (
+	  indicatorTopPadding + indicatorHeight + indicatorBottomPadding + contentItemHeight + 2 *
+	  contentItemVerticalPadding)
 
   // ──── General ──── //
   property bool clickable: true
@@ -63,68 +64,68 @@ Item
   // ──── Component resuming the step ──── //
   property Component indicator: Rectangle
   {
-    width: indicatorWidth
-    height: indicatorHeight
+	width: indicatorWidth
+	height: indicatorHeight
 
-    property Qaterial.StepperElement element
-    property int index
-    readonly property bool done: element && element.done
+	property Qaterial.StepperElement element
+	property int index
+	readonly property bool done: element && element.done
 
-    radius: width / 2
-    color:
-    {
-      if(currentIndex >= index)
-        return done ? Qaterial.Style.accentColor : Qaterial.Style.dividersColor()
-      return Qaterial.Style.dividersColor()
-    }
-    Component
-    {
-      id: doneIcon
-      Qaterial.ColorIcon
-      {
-        anchors.centerIn: parent
-        color: Qaterial.Style.primaryTextColor()
-        source: Qaterial.Icons.check
-      } // ColorIcon
-    } // Component
-    Component
-    {
-      id: stepNumber
-      Qaterial.LabelButton
-      {
-        anchors.centerIn: parent
-        text: index + 1
-      } // Label
-    } // Component
-    Loader
-    {
-      anchors.centerIn: parent
-      sourceComponent: done ? doneIcon : stepNumber
-    } // Loader
+	radius: width / 2
+	color:
+	{
+	  if(currentIndex >= index)
+		return done ? Qaterial.Style.accentColor : Qaterial.Style.dividersColor()
+	  return Qaterial.Style.dividersColor()
+	}
+	Component
+	{
+	  id: doneIcon
+	  Qaterial.ColorIcon
+	  {
+		anchors.centerIn: parent
+		color: Qaterial.Style.primaryTextColor()
+		source: Qaterial.Icons.check
+	  } // ColorIcon
+	} // Component
+	Component
+	{
+	  id: stepNumber
+	  Qaterial.LabelButton
+	  {
+		anchors.centerIn: parent
+		text: index + 1
+	  } // Label
+	} // Component
+	Loader
+	{
+	  anchors.centerIn: parent
+	  sourceComponent: done ? doneIcon : stepNumber
+	} // Loader
   } // indicator : Rectangle
 
   // ──── Component representing the step displayed below the indicator ──── //
   property Component contentItem: Qaterial.Label
   {
-    width: contentItemWidth
-    height: contentItemHeight
+	width: contentItemWidth
+	height: contentItemHeight
 
-    property Qaterial.StepperElement element
-    property int index
-    readonly property bool isCurrent: index === currentIndex
+	property Qaterial.StepperElement element
+	property int index
+	readonly property bool isCurrent: index === currentIndex
 
-    text: element.text
-    horizontalAlignment: vertical ? Text.AlignLeft : Text.AlignHCenter
-    font.bold: isCurrent
-    color: isCurrent ? Qaterial.Style.accentColor : Qaterial.Style.primaryTextColor()
+	text: element.text
+	horizontalAlignment: vertical ? Text.AlignLeft : Text.AlignHCenter
+	font.bold: isCurrent
+	color: isCurrent ? Qaterial.Style.accentColor : Qaterial.Style.primaryTextColor()
   } // Label
 
   // ──── Component displayed between indicators to separate different steps ──── //
   property Component separator: Rectangle
   {
-    color: Qaterial.Style.dividersColor()
-    height: separatorHeight
-    radius: separatorWidth
+	color: Qaterial.Style.dividersColor()
+	height: separatorHeight
+	radius: separatorWidth
   }
 
   // If user wants to change name property to access model element
@@ -132,152 +133,163 @@ Item
   property string previousRole: "previous"
   property string nextRole: "next"
 
+
+  // ---- Signals ---- //
+  signal clicked(int index)
+
   // ──── Private properties ──── //
   readonly property int _stepperWidth: width / count
   readonly property int _stepperHeight: height / count
 
   Repeater
   {
-    id: _repeater
+	id: _repeater
 
-    model: root.model
+	model: root.model
 
-    delegate: Item
-    {
-      id: _step
-      x: root.vertical ? 0 : (model.index * root._stepperWidth)
-      y: vertical ? (model.index * root._stepperHeight) : 0
-      height: root.vertical ? _stepperHeight : root.height
-      width: root.vertical ? root.width : root._stepperWidth
+	delegate: Item
+	{
+	  id: _step
+	  x: root.vertical ? 0 : (model.index * root._stepperWidth)
+	  y: vertical ? (model.index * root._stepperHeight) : 0
+	  height: root.vertical ? _stepperHeight : root.height
+	  width: root.vertical ? root.width : root._stepperWidth
 
-      readonly property Qaterial.StepperElement element: model.qtObject // QOlm functionality
+	  readonly property Qaterial.StepperElement element: model.qtObject // QOlm functionality
 
-      Loader
-      {
-        id: _indicatorLoader
-        x: root.vertical ? root.indicatorLeftPadding : (root._stepperWidth / 2 - root.indicatorWidth / 2)
-        y: root.vertical ? (root._stepperHeight / 2 - root.indicatorHeight / 2) : root.indicatorTopPadding
+	  Loader
+	  {
+		id: _indicatorLoader
+		x: root.vertical ? root.indicatorLeftPadding : (root._stepperWidth / 2 - root.indicatorWidth / 2)
+		y: root.vertical ? (root._stepperHeight / 2 - root.indicatorHeight / 2) : root.indicatorTopPadding
 
-        sourceComponent: root.indicator
+		sourceComponent: root.indicator
 
-        Binding
-        {
-          target: _indicatorLoader.item
-          when: _indicatorLoader.item && _indicatorLoader.item.hasOwnProperty(root.elementRole)
-          property: root.elementRole
-          value: _step.element
-          restoreMode: Binding.RestoreNone
-        } // Binding for element
+		Binding
+		{
+		  target: _indicatorLoader.item
+		  when: _indicatorLoader.item && _indicatorLoader.item.hasOwnProperty(root.elementRole)
+		  property: root.elementRole
+		  value: _step.element
+		  restoreMode: Binding.RestoreNone
+		} // Binding for element
 
-        Binding
-        {
-          target: _indicatorLoader.item
-          when: _indicatorLoader.item && _indicatorLoader.item.hasOwnProperty("index")
-          property: "index"
-          value: model.index
-          restoreMode: Binding.RestoreNone
-        } // Binding for index
+		Binding
+		{
+		  target: _indicatorLoader.item
+		  when: _indicatorLoader.item && _indicatorLoader.item.hasOwnProperty("index")
+		  property: "index"
+		  value: model.index
+		  restoreMode: Binding.RestoreNone
+		} // Binding for index
 
-        // done, optional and alertMessage are accessible with element.done / .optional / .alertMessage
+		// done, optional and alertMessage are accessible with element.done / .optional / .alertMessage
 
-      } // Loader
+	  } // Loader
 
-      Loader
-      {
-        id: _contentItemLoader
-        x: root.vertical ?
-          (root.indicatorLeftPadding + root.indicatorWidth + root.indicatorRightPadding) : (root._stepperWidth / 2 -
-            root.contentItemWidth / 2)
-        y: root.vertical ?
-          (root._stepperHeight / 2 - root.contentItemHeight / 2) : (root.indicatorTopPadding + root.indicatorHeight +
-            root.indicatorBottomPadding)
+	  Loader
+	  {
+		id: _contentItemLoader
+		x: root.vertical ?
+		  (root.indicatorLeftPadding + root.indicatorWidth + root.indicatorRightPadding) : (root._stepperWidth / 2 -
+			root.contentItemWidth / 2)
+		y: root.vertical ?
+		  (root._stepperHeight / 2 - root.contentItemHeight / 2) : (root.indicatorTopPadding + root.indicatorHeight +
+			root.indicatorBottomPadding)
 
-        sourceComponent: root.contentItem
+		sourceComponent: root.contentItem
 
-        Binding
-        {
-          target: _contentItemLoader.item
-          when: _contentItemLoader.item && _contentItemLoader.item.hasOwnProperty(root.elementRole)
-          property: root.elementRole
-          value: _step.element
-          restoreMode: Binding.RestoreNone
-        } // Binding for element
+		Binding
+		{
+		  target: _contentItemLoader.item
+		  when: _contentItemLoader.item && _contentItemLoader.item.hasOwnProperty(root.elementRole)
+		  property: root.elementRole
+		  value: _step.element
+		  restoreMode: Binding.RestoreNone
+		} // Binding for element
 
-        Binding
-        {
-          target: _contentItemLoader.item
-          when: _contentItemLoader.item && _contentItemLoader.item.hasOwnProperty("index")
-          property: "index"
-          value: model.index
-          restoreMode: Binding.RestoreNone
-        } // Binding for index
+		Binding
+		{
+		  target: _contentItemLoader.item
+		  when: _contentItemLoader.item && _contentItemLoader.item.hasOwnProperty("index")
+		  property: "index"
+		  value: model.index
+		  restoreMode: Binding.RestoreNone
+		} // Binding for index
 
-        // done, optional and alertMessage are accessible with element.done / .optional / .alertMessage
+		// done, optional and alertMessage are accessible with element.done / .optional / .alertMessage
 
-      } // Loader
+	  } // Loader
 
-      MouseArea
-      {
-        anchors.fill: parent
-        enabled: root.clickable
-        onClicked: () => root.currentIndex = model.index
+	  MouseArea
+	  {
+		anchors.fill: parent
+		//enabled: root.clickable
+		//onClicked: () => root.currentIndex = model.index
+		enabled: true
+		onClicked: {
+			if (root.clickable)
+				root.currentIndex = model.index
 
-        //Qaterial.DebugRectangle { anchors.fill: parent }
-      } // MouseArea
-    } // Item
+			root.clicked(model.index)
+		}
+
+		//Qaterial.DebugRectangle { anchors.fill: parent }
+	  } // MouseArea
+	} // Item
   } // Repeater
 
   Repeater
   {
-    model: root.count - 1
+	model: root.count - 1
 
-    delegate: Loader
-    {
-      id: _separatorLoader
+	delegate: Loader
+	{
+	  id: _separatorLoader
 
-      x: root.vertical ?
-        (root.indicatorLeftPadding + root.indicatorWidth / 2 - root.separatorWidth / 2) : (root._stepperWidth / 2 +
-          root.indicatorWidth / 2 + root.indicatorLeftPadding + index * root._stepperWidth)
+	  x: root.vertical ?
+		(root.indicatorLeftPadding + root.indicatorWidth / 2 - root.separatorWidth / 2) : (root._stepperWidth / 2 +
+		  root.indicatorWidth / 2 + root.indicatorLeftPadding + index * root._stepperWidth)
 
-      y: root.vertical ?
-        (root._stepperHeight / 2 + root.indicatorHeight / 2 + root.indicatorTopPadding + index * root
-          ._stepperHeight) : (root.indicatorTopPadding + root.indicatorHeight / 2 - root.separatorHeight / 2)
+	  y: root.vertical ?
+		(root._stepperHeight / 2 + root.indicatorHeight / 2 + root.indicatorTopPadding + index * root
+		  ._stepperHeight) : (root.indicatorTopPadding + root.indicatorHeight / 2 - root.separatorHeight / 2)
 
-      width: root.vertical ?
-        root.separatorWidth : (root._stepperWidth - root.indicatorWidth - root.indicatorLeftPadding - root
-          .indicatorRightPadding)
-      height: root.vertical ?
-        (root._stepperHeight - root.indicatorHeight - root.indicatorTopPadding - root.indicatorBottomPadding) : root
-        .separatorHeight
+	  width: root.vertical ?
+		root.separatorWidth : (root._stepperWidth - root.indicatorWidth - root.indicatorLeftPadding - root
+		  .indicatorRightPadding)
+	  height: root.vertical ?
+		(root._stepperHeight - root.indicatorHeight - root.indicatorTopPadding - root.indicatorBottomPadding) : root
+		.separatorHeight
 
-      sourceComponent: root.separator
+	  sourceComponent: root.separator
 
-      Binding
-      {
-        target: _separatorLoader.item
-        when: _separatorLoader.item && _separatorLoader.item.hasOwnProperty(root.previousRole)
-        property: root.previousRole
-        value: root.model.get(index)
-        restoreMode: Binding.RestoreNone
-      } // Binding for previous
+	  Binding
+	  {
+		target: _separatorLoader.item
+		when: _separatorLoader.item && _separatorLoader.item.hasOwnProperty(root.previousRole)
+		property: root.previousRole
+		value: root.model.get(index)
+		restoreMode: Binding.RestoreNone
+	  } // Binding for previous
 
-      Binding
-      {
-        target: _separatorLoader.item
-        when: _separatorLoader.item && _separatorLoader.item.hasOwnProperty(root.nextRole)
-        property: root.nextRole
-        value: root.model.get(index + 1)
-        restoreMode: Binding.RestoreNone
-      } // Binding for next
+	  Binding
+	  {
+		target: _separatorLoader.item
+		when: _separatorLoader.item && _separatorLoader.item.hasOwnProperty(root.nextRole)
+		property: root.nextRole
+		value: root.model.get(index + 1)
+		restoreMode: Binding.RestoreNone
+	  } // Binding for next
 
-      Binding
-      {
-        target: _separatorLoader.item
-        when: _separatorLoader.item && _separatorLoader.item.hasOwnProperty("index")
-        property: "index"
-        value: model.index
-        restoreMode: Binding.RestoreNone
-      } // Binding for index
-    } // Loader
+	  Binding
+	  {
+		target: _separatorLoader.item
+		when: _separatorLoader.item && _separatorLoader.item.hasOwnProperty("index")
+		property: "index"
+		value: model.index
+		restoreMode: Binding.RestoreNone
+	  } // Binding for index
+	} // Loader
   } // Repeater
 } // Item

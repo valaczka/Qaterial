@@ -1,8 +1,9 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Templates 2.12 as T
+import QtQuick 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Templates 2.15 as T
 
 import Qaterial 1.0 as Qaterial
+import "." as Qaterial
 
 T.Button
 {
@@ -12,9 +13,9 @@ T.Button
   property bool zoomLabelOnHovered: true
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-    implicitContentWidth + leftPadding + rightPadding)
+	implicitContentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-    implicitContentHeight + topPadding + bottomPadding)
+	implicitContentHeight + topPadding + bottomPadding)
 
   topInset: Qaterial.Style.fab.flatInset
   bottomInset: Qaterial.Style.fab.flatInset
@@ -27,38 +28,38 @@ T.Button
 
   contentItem: Qaterial.Label
   {
-    text: control.text
-    font: control.font
+	text: control.text
+	font: control.font
 
-    horizontalAlignment: Text.AlignHCenter
-    verticalAlignment: Text.AlignVCenter
+	horizontalAlignment: Text.AlignHCenter
+	verticalAlignment: Text.AlignVCenter
 
-    scale: (control.hovered && control.zoomLabelOnHovered) ? 1.10 : 1
+	scale: (control.hovered && control.zoomLabelOnHovered) ? 1.10 : 1
 
-    Binding on color
-    {
-      when: control.highlighted && !control.checked
-      value: Qaterial.Style.accentColor
-    }
-    // Qaterial.DebugRectangle { anchors.fill: parent; border.color: "red" }
+	Binding on color
+	{
+	  when: control.highlighted && !control.checked
+	  value: Qaterial.Style.accentColor
+	}
+	// Qaterial.DebugRectangle { anchors.fill: parent; border.color: "red" }
   } // Label
 
   background: Rectangle
   {
-    readonly property color checkedColor: Qaterial.Style.accentColor
-    readonly property color hoveredColor: Qaterial.Style.rippleColor(Qaterial.Style.RippleBackground.AccentLight)
+	readonly property color checkedColor: Qaterial.Style.accentColor
+	readonly property color hoveredColor: Qaterial.Style.rippleColor(Qaterial.Style.RippleBackground.AccentLight)
 
-    implicitWidth: Qaterial.Style.roundIcon.size - Qaterial.Style.fab.flatInset * 2
-    implicitHeight: Qaterial.Style.roundIcon.size - Qaterial.Style.fab.flatInset * 2
+	implicitWidth: Qaterial.Style.roundIcon.size - Qaterial.Style.fab.flatInset * 2
+	implicitHeight: Qaterial.Style.roundIcon.size - Qaterial.Style.fab.flatInset * 2
 
-    radius: height / 2
-    color:
-    {
-      if(control.checked)
-        return checkedColor
-      return control.hovered ? hoveredColor : "transparent"
-    }
-    // Qaterial.DebugRectangle { anchors.fill: parent; border.color: "green" }
+	radius: height / 2
+	color:
+	{
+	  if(control.checked)
+		return checkedColor
+	  return control.hovered ? hoveredColor : "transparent"
+	}
+	// Qaterial.DebugRectangle { anchors.fill: parent; border.color: "green" }
   }
   // Qaterial.DebugRectangle { anchors.fill: parent; border.color: "violet" }
 }
