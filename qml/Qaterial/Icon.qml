@@ -19,6 +19,8 @@ Item
   property real size: Qaterial.Style.smallIcon
   property bool cached: true
 
+  property alias sourceSize: dummyImage.sourceSize
+
   readonly property real _implicitSize: icon.toString() ? size : 0
   readonly property bool isImage: color.a === 0
 
@@ -27,37 +29,37 @@ Item
 
   Image
   {
-    id: dummyImage
+	id: dummyImage
 
-    anchors.fill: parent
+	anchors.fill: parent
 
-    fillMode: Image.PreserveAspectFit
-    sourceSize: Qt.size(root.width, root.height)
-    visible: root.isImage && root.enabled
+	fillMode: Image.PreserveAspectFit
+	sourceSize: Qt.size(root.width, root.height)
+	visible: root.isImage && root.enabled
   } // Image
 
   QGE.ColorOverlay
   {
-    anchors.fill: parent
+	anchors.fill: parent
 
-    source: dummyImage
-    readonly property color implicitColor: enabled ? root.color : Qaterial.Style.colorTheme.disabledText
-    color: Qt.rgba(implicitColor.r, implicitColor.g, implicitColor.b, implicitColor.a)
+	source: dummyImage
+	readonly property color implicitColor: enabled ? root.color : Qaterial.Style.colorTheme.disabledText
+	color: Qt.rgba(implicitColor.r, implicitColor.g, implicitColor.b, implicitColor.a)
 
-    cached: root.cached
-    visible: !root.isImage
+	cached: root.cached
+	visible: !root.isImage
   } // ColorOverlay
 
   QGE.Colorize
   {
-    anchors.fill: parent
+	anchors.fill: parent
 
-    source: dummyImage
-    hue: 0
-    saturation: 0
-    lightness: -0.2
+	source: dummyImage
+	hue: 0
+	saturation: 0
+	lightness: -0.2
 
-    cached: root.cached
-    visible: root.isImage && !root.enabled
+	cached: root.cached
+	visible: root.isImage && !root.enabled
   } // Colorize
 } // Item
