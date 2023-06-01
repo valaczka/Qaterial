@@ -77,13 +77,13 @@ Qaterial.Theme
   property bool preferAccentOnPrimary: theme === Style.Theme.Light ? preferAccentOnPrimaryLight : preferAccentOnPrimaryDark
 
   // amount of spacing that should be used around smaller UI elements, for example as spacing in Columns.
-  property double smallSpacing: dense ? 6 : 8
+  property double smallSpacing: (dense ? 6 : 8) * pixelSizeRatio
   // amount of spacing that should be used inside bigger UI elements, for example between an icon and the corresponding text.
-  property double largeSpacing: dense ? 12 : 16
+  property double largeSpacing: (dense ? 12 : 16) * pixelSizeRatio
 
-  property double smallIcon: dense ? 20 : 24
-  property double mediumIcon: dense ? 28 : 32
-  property double largeIcon: dense ? 36 : 40
+  property double smallIcon: (dense ? 20 : 24) * pixelSizeRatio
+  property double mediumIcon: (dense ? 28 : 32) * pixelSizeRatio
+  property double largeIcon: (dense ? 36 : 40) * pixelSizeRatio
 
   property color primaryColorLight: "white"
   property color primaryColorDark: "#202225" //"#212121"
@@ -383,39 +383,39 @@ Qaterial.Theme
   property string menuFontStyleName: "Regular"
   property string menuHintFontStyleName: "Medium"
 
-  property double display3FontPointSize: _root.dense ? 37.5 : 42
-  property double display2FontPointSize: _root.dense ? 30 : 33.75
-  property double display1FontPointSize: _root.dense ? 23.25 : 25.5
-  property double headingFontPointSize: _root.dense ? 16.5 : 18
-  property double titleFontPointSize: _root.dense ? 13.5 : 15
-  property double subHeadingFontPointSize: _root.dense ? 10.5 : 12
-  property double listTextFontPointSize: _root.dense ? 10.5 : 12
-  property double listSecTextFontPointSize: _root.dense ? 9 : 10.5
-  property double overlineFontPointSize: _root.dense ? 7.5 : 8.5
-  property double body2FontPointSize: _root.dense ? 9 : 10.5
-  property double body1FontPointSize: _root.dense ? 9 : 10.5
-  property double captionFontPointSize: _root.dense ? 8 : 9
-  property double hintFontPointSize: _root.dense ? 7.5 : 8.5
-  property double buttonFontPointSize: _root.dense ? 9 : 11
-  property double menuFontPointSize: _root.dense ? 10.5 : 12
-  property double menuHintFontPointSize: _root.dense ? 9 : 10.5
+  property double display3FontPointSize: (_root.dense ? 37.5 : 42) * pixelSizeRatio
+  property double display2FontPointSize: (_root.dense ? 30 : 33.75) * pixelSizeRatio
+  property double display1FontPointSize: (_root.dense ? 23.25 : 25.5) * pixelSizeRatio
+  property double headingFontPointSize: (_root.dense ? 16.5 : 18) * pixelSizeRatio
+  property double titleFontPointSize: (_root.dense ? 13.5 : 15) * pixelSizeRatio
+  property double subHeadingFontPointSize: (_root.dense ? 10.5 : 12) * pixelSizeRatio
+  property double listTextFontPointSize: (_root.dense ? 10.5 : 12) * pixelSizeRatio
+  property double listSecTextFontPointSize: (_root.dense ? 9 : 10.5) * pixelSizeRatio
+  property double overlineFontPointSize: (_root.dense ? 7.5 : 8.5) * pixelSizeRatio
+  property double body2FontPointSize: (_root.dense ? 9 : 10.5) * pixelSizeRatio
+  property double body1FontPointSize: (_root.dense ? 9 : 10.5) * pixelSizeRatio
+  property double captionFontPointSize: (_root.dense ? 8 : 9) * pixelSizeRatio
+  property double hintFontPointSize: (_root.dense ? 7.5 : 8.5) * pixelSizeRatio
+  property double buttonFontPointSize: (_root.dense ? 9 : 11) * pixelSizeRatio
+  property double menuFontPointSize: (_root.dense ? 10.5 : 12) * pixelSizeRatio
+  property double menuHintFontPointSize: (_root.dense ? 9 : 10.5) * pixelSizeRatio
 
-  property double display3FontPixelSize: _root.dense ? 50 : 56
-  property double display2FontPixelSize: _root.dense ? 42 : 45
-  property double display1FontPixelSize: _root.dense ? 32 : 34
-  property double headingFontPixelSize: _root.dense ? 22 : 24
-  property double titleFontPixelSize: _root.dense ? 19 : 20
-  property double subHeadingFontPixelSize: _root.dense ? 15 : 16
-  property double listTextFontPixelSize: _root.dense ? 15 : 16
-  property double listSecTextFontPixelSize: _root.dense ? 13 : 14
-  property double overlineFontPixelSize: _root.dense ? 10 : 11
-  property double body2FontPixelSize: _root.dense ? 13 : 14
-  property double body1FontPixelSize: _root.dense ? 13 : 14
-  property double captionFontPixelSize: _root.dense ? 11 : 12
-  property double hintFontPixelSize: _root.dense ? 10 : 11
-  property double buttonFontPixelSize: _root.dense ? 13 : 14
-  property double menuFontPixelSize: _root.dense ? 13 : 14
-  property double menuHintFontPixelSize: _root.dense ? 11 : 12
+  property double display3FontPixelSize: (_root.dense ? 50 : 56) * pixelSizeRatio
+  property double display2FontPixelSize: (_root.dense ? 42 : 45) * pixelSizeRatio
+  property double display1FontPixelSize: (_root.dense ? 32 : 34) * pixelSizeRatio
+  property double headingFontPixelSize: (_root.dense ? 22 : 24) * pixelSizeRatio
+  property double titleFontPixelSize: (_root.dense ? 19 : 20) * pixelSizeRatio
+  property double subHeadingFontPixelSize: (_root.dense ? 15 : 16) * pixelSizeRatio
+  property double listTextFontPixelSize: (_root.dense ? 15 : 16) * pixelSizeRatio
+  property double listSecTextFontPixelSize: (_root.dense ? 13 : 14) * pixelSizeRatio
+  property double overlineFontPixelSize: (_root.dense ? 10 : 11) * pixelSizeRatio
+  property double body2FontPixelSize: (_root.dense ? 13 : 14) * pixelSizeRatio
+  property double body1FontPixelSize: (_root.dense ? 13 : 14) * pixelSizeRatio
+  property double captionFontPixelSize: (_root.dense ? 11 : 12) * pixelSizeRatio
+  property double hintFontPixelSize: (_root.dense ? 10 : 11) * pixelSizeRatio
+  property double buttonFontPixelSize: (_root.dense ? 13 : 14) * pixelSizeRatio
+  property double menuFontPixelSize: (_root.dense ? 13 : 14) * pixelSizeRatio
+  property double menuHintFontPixelSize: (_root.dense ? 11 : 12) * pixelSizeRatio
 
   function textTypeToFontFamily(type)
   {
@@ -705,23 +705,23 @@ Qaterial.Theme
   property
   var rawButton: QtObject
   {
-	property double minWidth: _root.dense ? 52 : 64
-	property double minHeight: _root.dense ? 24 : 36
-	property double padding: _root.dense ? 7 : 16
-	property double iconPadding: _root.dense ? 6 : 12
-	property double spacing: _root.dense ? 4 : 8
-	property double iconWidth: _root.dense ? 14 : 18
+	property double minWidth: (_root.dense ? 52 : 64) * pixelSizeRatio
+	property double minHeight: (_root.dense ? 24 : 36) * pixelSizeRatio
+	property double padding: (_root.dense ? 7 : 16) * pixelSizeRatio
+	property double iconPadding: (_root.dense ? 6 : 12) * pixelSizeRatio
+	property double spacing: (_root.dense ? 4 : 8) * pixelSizeRatio
+	property double iconWidth: (_root.dense ? 14 : 18) * pixelSizeRatio
 	property double cornerRadius: _root.dense ? 2 : 4
 
 	property double defaultElevation: 2
 	property double flatElevation: 0
-	property double defaultPressedElevation: _root.dense ? 6 : 8
-	property double flatPressedElevation: _root.dense ? 1 : 2
+	property double defaultPressedElevation: (_root.dense ? 6 : 8) * pixelSizeRatio
+	property double flatPressedElevation: (_root.dense ? 1 : 2) * pixelSizeRatio
 
-	property double topInset: _root.dense ? 4 : 6
-	property double bottomInset: _root.dense ? 4 : 6
-	property double leftInset: _root.dense ? 2 : 4
-	property double rightInset: _root.dense ? 2 : 4
+	property double topInset: (_root.dense ? 4 : 6) * pixelSizeRatio
+	property double bottomInset: (_root.dense ? 4 : 6) * pixelSizeRatio
+	property double leftInset: (_root.dense ? 2 : 4) * pixelSizeRatio
+	property double rightInset: (_root.dense ? 2 : 4) * pixelSizeRatio
 
 	property double outlinedWidth: 1
 	property double outlinedFocusWidth: _root.dense ? 1 : 2
@@ -737,101 +737,101 @@ Qaterial.Theme
   property
   var fab: QtObject
   {
-	property double minWidth: _root.dense ? 44 : 56
-	property double minWidthMini: _root.dense ? 32 : 40
-	property double minWidthExtended: _root.dense ? 52 : 64
-	property double minHeightExtended: minWidth //_root.dense ? 34 : 48
+	property double minWidth: (_root.dense ? 44 : 56) * pixelSizeRatio
+	property double minWidthMini: (_root.dense ? 32 : 40) * pixelSizeRatio
+	property double minWidthExtended: (_root.dense ? 52 : 64) * pixelSizeRatio
+	property double minHeightExtended: minWidth //(_root.dense ? 34 : 48) * pixelSizeRatio
 
-	property double flatInset: _root.dense ? 2 : 4
-	property double flatInsetNoClip: _root.dense ? 5 : 10
+	property double flatInset: (_root.dense ? 2 : 4) * pixelSizeRatio
+	property double flatInsetNoClip: (_root.dense ? 5 : 10) * pixelSizeRatio
 
-	property double padding: _root.dense ? 8 : 16
-	property double paddingMini: _root.dense ? 4 : 8
-	property double iconPadding: _root.dense ? 8 : 12
-	property double textPadding: _root.dense ? 12 : 20
+	property double padding: (_root.dense ? 8 : 16) * pixelSizeRatio
+	property double paddingMini: (_root.dense ? 4 : 8) * pixelSizeRatio
+	property double iconPadding: (_root.dense ? 8 : 12) * pixelSizeRatio
+	property double textPadding: (_root.dense ? 12 : 20) * pixelSizeRatio
 
-	property double spacing: _root.dense ? 8 : 12
-	property double iconWidth: _root.dense ? 18 : 24
+	property double spacing: (_root.dense ? 8 : 12) * pixelSizeRatio
+	property double iconWidth: (_root.dense ? 18 : 24) * pixelSizeRatio
 
 	/*property double fontPointSize:              _root.buttonFontPointSize
 	  property int fontCapitalisation:            Font.AllUppercase
 	  property string fontFamily:                 _root.fontFamily
 	  property string fontStyleName:              "Medium"*/
 
-	property double elevation: _root.dense ? 4 : 6
-	property double pressedElevation: _root.dense ? 10 : 12
+	property double elevation: (_root.dense ? 4 : 6) * pixelSizeRatio
+	property double pressedElevation: (_root.dense ? 10 : 12) * pixelSizeRatio
 
-	property double anchorsOffset: _root.dense ? 10 : 16
+	property double anchorsOffset: (_root.dense ? 10 : 16) * pixelSizeRatio
   } // QtObject
 
   property
   var toolbar: QtObject
   {
-	property double implicitHeight: _root.dense ? 38 : 48
-	property double elevation: _root.dense ? 3 : 4
+	property double implicitHeight: (_root.dense ? 38 : 48) * pixelSizeRatio
+	property double elevation: (_root.dense ? 3 : 4) * pixelSizeRatio
   } // QtObject
 
   property
   var toolButton: QtObject
   {
-	property double minWidth: _root.dense ? 28 : 36
-	property double minHeight: _root.dense ? 28 : 36
+	property double minWidth: (_root.dense ? 28 : 36) * pixelSizeRatio
+	property double minHeight: (_root.dense ? 28 : 36) * pixelSizeRatio
 
-	property double appBarButtonWidth: _root.dense ? 24 : 30
-	property double appBarButtonHeight: _root.dense ? 24 : 30
+	property double appBarButtonWidth: (_root.dense ? 24 : 30) * pixelSizeRatio
+	property double appBarButtonHeight: (_root.dense ? 24 : 30) * pixelSizeRatio
 
-	property double padding: _root.dense ? 7 : 9
+	property double padding: (_root.dense ? 7 : 9) * pixelSizeRatio
 
-	property double spacing: _root.dense ? 8 : 12
-	property double iconWidth: _root.dense ? 18 : 24
+	property double spacing: (_root.dense ? 8 : 12) * pixelSizeRatio
+	property double iconWidth: (_root.dense ? 18 : 24) * pixelSizeRatio
 
-	property double topInset: _root.dense ? 2 : 6
-	property double bottomInset: _root.dense ? 2 : 6
-	property double leftInset: _root.dense ? 1 : 2
-	property double rightInset: _root.dense ? 1 : 2
+	property double topInset: (_root.dense ? 2 : 6) * pixelSizeRatio
+	property double bottomInset: (_root.dense ? 2 : 6) * pixelSizeRatio
+	property double leftInset: (_root.dense ? 1 : 2) * pixelSizeRatio
+	property double rightInset: (_root.dense ? 1 : 2) * pixelSizeRatio
 
-	property double elevation: _root.dense ? 0 : 0
-	property double pressedElevation: _root.dense ? 0 : 0
+	property double elevation: (_root.dense ? 0 : 0) * pixelSizeRatio
+	property double pressedElevation: (_root.dense ? 0 : 0) * pixelSizeRatio
 
-	property double separatorLargePadding: _root.dense ? 3 : 6
-	property double separatorSmallPadding: _root.dense ? 2 : 5
-	property double separatorImplicitWidth: _root.dense ? 24 : 38
+	property double separatorLargePadding: (_root.dense ? 3 : 6) * pixelSizeRatio
+	property double separatorSmallPadding: (_root.dense ? 2 : 5) * pixelSizeRatio
+	property double separatorImplicitWidth: (_root.dense ? 24 : 38) * pixelSizeRatio
   } // QtObject
 
   property
   var tabBar: QtObject
   {
-	property double elevation: 10
-	property double highlightHeight: _root.dense ? 2 : 2
-	property double minHeight: _root.dense ? 38 : 48
-	property double minLeftWidth: _root.dense ? 40 : 52
-	property double minTabWidth: _root.dense ? 96 : 127
-	property double maxTabWidth: _root.dense ? 200 : 360
+	property double elevation: 10 * pixelSizeRatio
+	property double highlightHeight: (_root.dense ? 2 : 2) * pixelSizeRatio
+	property double minHeight: (_root.dense ? 38 : 48) * pixelSizeRatio
+	property double minLeftWidth: (_root.dense ? 40 : 52) * pixelSizeRatio
+	property double minTabWidth: (_root.dense ? 96 : 127) * pixelSizeRatio
+	property double maxTabWidth: (_root.dense ? 200 : 360) * pixelSizeRatio
   } // QtObject
 
   property
   var tabButton: QtObject
   {
-	property double minWidth: _root.dense ? 70 : 90
-	property double minHeight: _root.dense ? 30 : 48
-	property double minHeightWithIcon: _root.dense ? 50 : 72
-	property double minHeightWithSmallIcon: _root.dense ? 42 : 48
-	property double padding: _root.dense ? 8 : 16
+	property double minWidth: (_root.dense ? 70 : 90) * pixelSizeRatio
+	property double minHeight: (_root.dense ? 30 : 48) * pixelSizeRatio
+	property double minHeightWithIcon: (_root.dense ? 50 : 72) * pixelSizeRatio
+	property double minHeightWithSmallIcon: (_root.dense ? 42 : 48) * pixelSizeRatio
+	property double padding: (_root.dense ? 8 : 16) * pixelSizeRatio
 
-	property double spacing: _root.dense ? 3 : 6
-	property double smallSpacing: _root.dense ? 2 : 3
-	property double spacingVertical: _root.dense ? 12 : 15
-	property double smallSpacingVertical: _root.dense ? 11 : 14
+	property double spacing: (_root.dense ? 3 : 6) * pixelSizeRatio
+	property double smallSpacing: (_root.dense ? 2 : 3) * pixelSizeRatio
+	property double spacingVertical: (_root.dense ? 12 : 15) * pixelSizeRatio
+	property double smallSpacingVertical: (_root.dense ? 11 : 14) * pixelSizeRatio
 
-	property double topPadding: _root.dense ? 6 : 12
-	property double smallTopPadding: _root.dense ? 3 : 6
-	property double iconPadding: _root.dense ? 6 : 12
-	property double iconWidth: _root.dense ? 18 : 24
+	property double topPadding: (_root.dense ? 6 : 12) * pixelSizeRatio
+	property double smallTopPadding: (_root.dense ? 3 : 6) * pixelSizeRatio
+	property double iconPadding: (_root.dense ? 6 : 12) * pixelSizeRatio
+	property double iconWidth: (_root.dense ? 18 : 24) * pixelSizeRatio
 
-	property double topInset: _root.dense ? 0 : 0
-	property double bottomInset: _root.dense ? 0 : 0
-	property double leftInset: _root.dense ? 0 : 0
-	property double rightInset: _root.dense ? 0 : 0
+	property double topInset: (_root.dense ? 0 : 0) * pixelSizeRatio
+	property double bottomInset: (_root.dense ? 0 : 0) * pixelSizeRatio
+	property double leftInset: (_root.dense ? 0 : 0) * pixelSizeRatio
+	property double rightInset: (_root.dense ? 0 : 0) * pixelSizeRatio
   } // QtObject
 
   enum DelegateType
@@ -848,24 +848,24 @@ Qaterial.Theme
   property
   var delegate: QtObject
   {
-	property double implicitWidth: _root.dense ? 160 : 200
+	property double implicitWidth: (_root.dense ? 160 : 200) * pixelSizeRatio
 
 	function implicitHeight1Line(type)
 	{
 	  switch(type)
 	  {
 		case Style.DelegateType.Overline:
-		  return _root.dense ? 52 : 64
+		  return (_root.dense ? 52 : 64) * pixelSizeRatio
 		case Style.DelegateType.Icon:
 		case Style.DelegateType.Round:
-		  return _root.dense ? 44 : 56
+		  return (_root.dense ? 44 : 56) * pixelSizeRatio
 		case Style.DelegateType.Square:
 		case Style.DelegateType.Large:
-		  return _root.dense ? 58 : 72
+		  return (_root.dense ? 58 : 72) * pixelSizeRatio
 		default:
 		  break
 	  }
-	  return _root.dense ? 38 : 48
+	  return (_root.dense ? 38 : 48) * pixelSizeRatio
 	} // function implicitHeight1Line(type)
 
 	function implicitHeight2Line(type)
@@ -873,21 +873,21 @@ Qaterial.Theme
 	  switch(type)
 	  {
 		case Style.DelegateType.Overline:
-		  return _root.dense ? 70 : 88
+		  return (_root.dense ? 70 : 88) * pixelSizeRatio
 		case Style.DelegateType.Icon:
 		case Style.DelegateType.Round:
 		case Style.DelegateType.Square:
 		case Style.DelegateType.Large:
-		  return _root.dense ? 62 : 72
+		  return (_root.dense ? 62 : 72) * pixelSizeRatio
 		default:
 		  break
 	  }
-	  return _root.dense ? 52 : 64
+	  return (_root.dense ? 52 : 64) * pixelSizeRatio
 	} // function implicitHeight2Line(type)
 
 	function implicitHeight3Line(type)
 	{
-	  return _root.dense ? 70 : 88
+	  return (_root.dense ? 70 : 88) * pixelSizeRatio
 	} // function implicitHeight3Line(type)
 
 	function implicitHeight(type, lines)
@@ -910,12 +910,12 @@ Qaterial.Theme
 		switch(type)
 		{
 		  case Style.DelegateType.Icon:
-			return _root.dense ? 26 : 32
+			return (_root.dense ? 26 : 32) * pixelSizeRatio
 		  case Style.DelegateType.Round:
 		  case Style.DelegateType.Square:
-			return _root.dense ? 12 : 16
+			return (_root.dense ? 12 : 16) * pixelSizeRatio
 		  case Style.DelegateType.Large:
-			return _root.dense ? 16 : 20
+			return (_root.dense ? 16 : 20) * pixelSizeRatio
 		  default:
 			break
 		}
@@ -926,11 +926,11 @@ Qaterial.Theme
 		switch(type)
 		{
 		  case Style.DelegateType.Icon:
-			return _root.dense ? 26 : 32
+			return (_root.dense ? 26 : 32) * pixelSizeRatio
 		  case Style.DelegateType.Round:
 		  case Style.DelegateType.Square:
 		  case Style.DelegateType.Large:
-			return _root.dense ? 12 : 16
+			return (_root.dense ? 12 : 16) * pixelSizeRatio
 		  default:
 			break
 		}
@@ -943,12 +943,12 @@ Qaterial.Theme
 	  switch(type)
 	  {
 		case Style.DelegateType.Icon:
-		  return _root.dense ? 12 : 16
+		  return (_root.dense ? 12 : 16) * pixelSizeRatio
 		case Style.DelegateType.Round:
-		  return _root.dense ? 6 : 8
+		  return (_root.dense ? 6 : 8) * pixelSizeRatio
 		case Style.DelegateType.Square:
 		case Style.DelegateType.Large:
-		  return _root.dense ? 7 : 8
+		  return (_root.dense ? 7 : 8) * pixelSizeRatio
 		default:
 		  break
 	  }
@@ -960,12 +960,12 @@ Qaterial.Theme
 	  switch(type)
 	  {
 		case Style.DelegateType.Icon:
-		  return _root.dense ? 20 : 24
+		  return (_root.dense ? 20 : 24) * pixelSizeRatio
 		case Style.DelegateType.Round:
-		  return _root.dense ? 12 : 16
+		  return (_root.dense ? 12 : 16) * pixelSizeRatio
 		case Style.DelegateType.Square:
 		case Style.DelegateType.Large:
-		  return _root.dense ? 9 : 8
+		  return (_root.dense ? 9 : 8) * pixelSizeRatio
 		default:
 		  break
 	  }
@@ -980,7 +980,7 @@ Qaterial.Theme
 		case Style.DelegateType.Round:
 		case Style.DelegateType.Square:
 		case Style.DelegateType.Large:
-		  return _root.dense ? 12 : 16
+		  return (_root.dense ? 12 : 16) * pixelSizeRatio
 		default:
 		  break
 	  }
@@ -1004,18 +1004,18 @@ Qaterial.Theme
 	{
 	  if(type === Style.DelegateType.Large)
 		return 0
-	  return _root.dense ? 12 : 16
+	  return (_root.dense ? 12 : 16) * pixelSizeRatio
 	} // function leftPadding(type, lines)
 
 	function rightPadding(type, lines)
 	{
-	  return _root.dense ? 12 : 16
+	  return (_root.dense ? 12 : 16) * pixelSizeRatio
 	} // function rightPadding(type, lines)
 
 	function baselineOffsetText(type, lines)
 	{
 	  if(type === Style.DelegateType.Overline)
-		return _root.dense ? 38 : 48
+		return (_root.dense ? 38 : 48) * pixelSizeRatio
 	  else if(lines === 2)
 	  {
 		switch(type)
@@ -1024,15 +1024,15 @@ Qaterial.Theme
 		  case Style.DelegateType.Round:
 		  case Style.DelegateType.Square:
 		  case Style.DelegateType.Large:
-			return _root.dense ? 26 : 32
+			return (_root.dense ? 26 : 32) * pixelSizeRatio
 		  default:
 			break
 		}
-		return _root.dense ? 22 : 28
+		return (_root.dense ? 22 : 28) * pixelSizeRatio
 	  }
 	  else if(lines >= 3)
 	  {
-		return _root.dense ? 22 : 28
+		return (_root.dense ? 22 : 28) * pixelSizeRatio
 	  }
 	  return 0
 	} // function baselineOffsetText(type, lines)
@@ -1040,7 +1040,7 @@ Qaterial.Theme
 	function baselineOffsetSecText(type, lines)
 	{
 	  if(type === Style.DelegateType.Overline)
-		return _root.dense ? 53 : 70
+		return (_root.dense ? 53 : 70) * pixelSizeRatio
 	  else if(lines === 2)
 	  {
 		switch(type)
@@ -1049,35 +1049,35 @@ Qaterial.Theme
 		  case Style.DelegateType.Round:
 		  case Style.DelegateType.Square:
 		  case Style.DelegateType.Large:
-			return _root.dense ? 42 : 52
+			return (_root.dense ? 42 : 52) * pixelSizeRatio
 		  default:
 			break
 		}
-		return _root.dense ? 38 : 48
+		return (_root.dense ? 38 : 48) * pixelSizeRatio
 	  }
 	  else if(lines >= 3)
 	  {
-		return _root.dense ? 38 : 48
+		return (_root.dense ? 38 : 48) * pixelSizeRatio
 	  }
 	  return 0
 	} // function baselineOffsetSecText(type, lines)
 
 	function baselineOffsetOverline(lines)
 	{
-	  return _root.dense ? 20 : 28
+	  return (_root.dense ? 20 : 28) * pixelSizeRatio
 	} // function baselineOffsetOverline(lines)
 
 	function roundWidth(large) { return squareWidth(large) } // function roundWidth(large)
 	function squareWidth(large)
 	{
-	  return large ? (_root.dense ? 44 : 56) : (_root.dense ? 32 :
-		40)
+	  return (large ? (_root.dense ? 44 : 56) : (_root.dense ? 32 :
+		40)) * pixelSizeRatio
 	} // function squareWidth(large)
-	function largeWidth() { return _root.dense ? 80 : 100 } // function largeWidth()
-	function largeHeight(lines) { return (_root.dense ? 44 : 56) } // function largeHeight(lines)
+	function largeWidth() { return (_root.dense ? 80 : 100) * pixelSizeRatio } // function largeWidth()
+	function largeHeight(lines) { return (_root.dense ? 44 : 56) * pixelSizeRatio } // function largeHeight(lines)
 
-	property double iconWidth: _root.dense ? 20 : 24
-	property double indicatorPadding: _root.dense ? 12 : 16
+	property double iconWidth: (_root.dense ? 20 : 24) * pixelSizeRatio
+	property double indicatorPadding: (_root.dense ? 12 : 16) * pixelSizeRatio
 
   } // QtObject
 
@@ -1103,112 +1103,112 @@ Qaterial.Theme
 	property color switchDisabledHandleColor: Qt.darker(switchUncheckedHandleColor, (Style.theme === Style.Theme
 	  .Light) ? 1.25 : 1.6)
 
-	property double implicitWidth: _root.dense ? 30 : 38
-	property double implicitHeight: _root.dense ? 26 : 32
-	property double trackHeight: _root.dense ? 12 : 14
-	property double handleRadius: _root.dense ? 16 : 20
+	property double implicitWidth: (_root.dense ? 30 : 38) * pixelSizeRatio
+	property double implicitHeight: (_root.dense ? 26 : 32) * pixelSizeRatio
+	property double trackHeight: (_root.dense ? 12 : 14) * pixelSizeRatio
+	property double handleRadius: (_root.dense ? 16 : 20) * pixelSizeRatio
   } // QtObject
 
   property
   var radioIndicator: QtObject
   {
-	property double implicitWidth: _root.dense ? 16 : 20
-	property double implicitHeight: _root.dense ? 16 : 20
+	property double implicitWidth: (_root.dense ? 16 : 20) * pixelSizeRatio
+	property double implicitHeight: (_root.dense ? 16 : 20) * pixelSizeRatio
   } // QtObject
 
   property
   var checkIndicator: QtObject
   {
-	property double implicitWidth: _root.dense ? 16 : 18
-	property double implicitHeight: _root.dense ? 16 : 18
-	property double iconWidth: _root.dense ? 16 : 19
+	property double implicitWidth: (_root.dense ? 16 : 18) * pixelSizeRatio
+	property double implicitHeight: (_root.dense ? 16 : 18) * pixelSizeRatio
+	property double iconWidth: (_root.dense ? 16 : 19) * pixelSizeRatio
 	property double radius: 2
-	property double partiallyCheckedWidth: _root.dense ? 10 : 12
-	property double partiallyCheckedHeight: _root.dense ? 2 : 3
+	property double partiallyCheckedWidth: (_root.dense ? 10 : 12) * pixelSizeRatio
+	property double partiallyCheckedHeight: (_root.dense ? 2 : 3) * pixelSizeRatio
   } // QtObject
 
   property
   var switchButton: QtObject
   {
-	property double horizontalPadding: _root.dense ? 6 : 8
-	property double verticalPadding: _root.dense ? 4 : 8
-	property double spacing: _root.dense ? 8 : 12
-	property double rippleWidth: _root.dense ? 24 : 28
+	property double horizontalPadding: (_root.dense ? 6 : 8) * pixelSizeRatio
+	property double verticalPadding: (_root.dense ? 4 : 8) * pixelSizeRatio
+	property double spacing: (_root.dense ? 8 : 12) * pixelSizeRatio
+	property double rippleWidth: (_root.dense ? 24 : 28) * pixelSizeRatio
   } // QtObject
 
   property
   var checkButton: QtObject
   {
-	property double horizontalPadding: _root.dense ? 6 : 8
-	property double verticalPadding: _root.dense ? 6 : 14
-	property double spacing: _root.dense ? 8 : 12
-	property double rippleWidth: _root.dense ? 24 : 28
+	property double horizontalPadding: (_root.dense ? 6 : 8) * pixelSizeRatio
+	property double verticalPadding: (_root.dense ? 6 : 14) * pixelSizeRatio
+	property double spacing: (_root.dense ? 8 : 12) * pixelSizeRatio
+	property double rippleWidth: (_root.dense ? 24 : 28) * pixelSizeRatio
   } // QtObject
 
   property
   var radioButton: QtObject
   {
-	property double horizontalPadding: _root.dense ? 6 : 8
-	property double verticalPadding: _root.dense ? 6 : 14
-	property double spacing: _root.dense ? 8 : 12
-	property double rippleWidth: _root.dense ? 18 : 28
+	property double horizontalPadding: (_root.dense ? 6 : 8) * pixelSizeRatio
+	property double verticalPadding: (_root.dense ? 6 : 14) * pixelSizeRatio
+	property double spacing: (_root.dense ? 8 : 12) * pixelSizeRatio
+	property double rippleWidth: (_root.dense ? 18 : 28) * pixelSizeRatio
   } // QtObject
 
   property
   var menu: QtObject
   {
-	property double elevation: _root.dense ? 6 : 8
-	property double verticalPadding: _root.dense ? 2 : 8
-	property double implicitHeight: _root.dense ? 28 : 38
-	property double implicitWidth: _root.dense ? 160 : 200
+	property double elevation: (_root.dense ? 6 : 8) * pixelSizeRatio
+	property double verticalPadding: (_root.dense ? 2 : 8) * pixelSizeRatio
+	property double implicitHeight: (_root.dense ? 28 : 38) * pixelSizeRatio
+	property double implicitWidth: (_root.dense ? 160 : 200) * pixelSizeRatio
 	property double radius: _root.dense ? 0 : 0
-	property double separatorWLargePadding: _root.dense ? 28 : 40
-	property double separatorWSmallPadding: _root.dense ? 4 : 8
-	property double separatorHSmallPadding: _root.dense ? 2 : 4
-	property double separatorImplicitWidth: _root.dense ? 150 : 200
+	property double separatorWLargePadding: (_root.dense ? 28 : 40) * pixelSizeRatio
+	property double separatorWSmallPadding: (_root.dense ? 4 : 8) * pixelSizeRatio
+	property double separatorHSmallPadding: (_root.dense ? 2 : 4) * pixelSizeRatio
+	property double separatorImplicitWidth: (_root.dense ? 150 : 200) * pixelSizeRatio
   } // QtObject
 
   property
   var menuBarItem: QtObject
   {
-	property double minWidth: _root.dense ? 54 : 64
-	property double minHeight: _root.dense ? 24 : 32
-	property double padding: _root.dense ? 4 : 6
-	property double iconPadding: _root.dense ? 2 : 4
-	property double spacing: _root.dense ? 2 : 4
-	property double iconWidth: _root.dense ? 14 : 18
+	property double minWidth: (_root.dense ? 54 : 64) * pixelSizeRatio
+	property double minHeight: (_root.dense ? 24 : 32) * pixelSizeRatio
+	property double padding: (_root.dense ? 4 : 6) * pixelSizeRatio
+	property double iconPadding: (_root.dense ? 2 : 4) * pixelSizeRatio
+	property double spacing: (_root.dense ? 2 : 4) * pixelSizeRatio
+	property double iconWidth: (_root.dense ? 14 : 18) * pixelSizeRatio
 	property double cornerRadius: _root.dense ? 2 : 4
 
-	property double topInset: _root.dense ? 2 : 4
-	property double bottomInset: _root.dense ? 2 : 4
-	property double leftInset: _root.dense ? 0 : 0
-	property double rightInset: _root.dense ? 0 : 0
+	property double topInset: (_root.dense ? 2 : 4) * pixelSizeRatio
+	property double bottomInset: (_root.dense ? 2 : 4) * pixelSizeRatio
+	property double leftInset: (_root.dense ? 0 : 0) * pixelSizeRatio
+	property double rightInset: (_root.dense ? 0 : 0) * pixelSizeRatio
   } // QtObject
 
   property
   var menuItem: QtObject
   {
-	property double minWidth: _root.dense ? 160 : 200
-	property double minHeight: _root.dense ? 24 : 32
-	property double padding: _root.dense ? 8 : 12
-	property double iconPadding: _root.dense ? 8 : 12
-	property double spacing: _root.dense ? 10 : 16
-	property double iconWidth: _root.dense ? 14 : 18
+	property double minWidth: (_root.dense ? 160 : 200) * pixelSizeRatio
+	property double minHeight: (_root.dense ? 24 : 32) * pixelSizeRatio
+	property double padding: (_root.dense ? 8 : 12) * pixelSizeRatio
+	property double iconPadding: (_root.dense ? 8 : 12) * pixelSizeRatio
+	property double spacing: (_root.dense ? 10 : 16) * pixelSizeRatio
+	property double iconWidth: (_root.dense ? 14 : 18) * pixelSizeRatio
 	property double cornerRadius: _root.dense ? 0 : 0
-	property double shortcutImplicitWidth: _root.dense ? 74 : 96
+	property double shortcutImplicitWidth: (_root.dense ? 74 : 96) * pixelSizeRatio
 
-	property double topInset: _root.dense ? 0 : 0
-	property double bottomInset: _root.dense ? 0 : 0
-	property double leftInset: _root.dense ? 1 : 2
-	property double rightInset: _root.dense ? 1 : 2
+	property double topInset: (_root.dense ? 0 : 0) * pixelSizeRatio
+	property double bottomInset: (_root.dense ? 0 : 0) * pixelSizeRatio
+	property double leftInset: (_root.dense ? 1 : 2) * pixelSizeRatio
+	property double rightInset: (_root.dense ? 1 : 2) * pixelSizeRatio
   } // QtObject
 
   property
   var scroll: QtObject
   {
-	property double implicitWidth: _root.dense ? 7 : 12
-	property double implicitWidthBackground: _root.dense ? 7 : 12
-	property double implicitWidthInactive: _root.dense ? 2 : 4
+	property double implicitWidth: (_root.dense ? 7 : 12) * pixelSizeRatio
+	property double implicitWidthBackground: (_root.dense ? 7 : 12) * pixelSizeRatio
+	property double implicitWidthInactive: (_root.dense ? 2 : 4) * pixelSizeRatio
 	property double radius: _root.dense ? 2 : 4
 	property double padding: _root.dense ? 4 : 4
   } // QtObject
@@ -1216,52 +1216,52 @@ Qaterial.Theme
   property
   var card: QtObject
   {
-	property double horizontalPadding: _root.dense ? 12 : 16
-	property double verticalPadding: _root.dense ? 6 : 8
+	property double horizontalPadding: (_root.dense ? 12 : 16) * pixelSizeRatio
+	property double verticalPadding: (_root.dense ? 6 : 8) * pixelSizeRatio
 	property double radius: _root.dense ? 3 : 4
-	property double defaultElevation: _root.dense ? 1 : 1
-	property double activeElevation: _root.dense ? 6 : 8
-	property double spacing: _root.dense ? 4 : 6
+	property double defaultElevation: (_root.dense ? 1 : 1) * pixelSizeRatio
+	property double activeElevation: (_root.dense ? 6 : 8) * pixelSizeRatio
+	property double spacing: (_root.dense ? 4 : 6) * pixelSizeRatio
 
-	property double roundImageSpacing: _root.dense ? 12 : 16
-	property double roundImageSize: _root.dense ? 32 : 40
+	property double roundImageSpacing: (_root.dense ? 12 : 16) * pixelSizeRatio
+	property double roundImageSize: (_root.dense ? 32 : 40) * pixelSizeRatio
 
-	property double mediaImplicitWidth: _root.dense ? 276 : 344
-	property double mediaImplicitHeight: _root.dense ? 156 : 194
+	property double mediaImplicitWidth: (_root.dense ? 276 : 344) * pixelSizeRatio
+	property double mediaImplicitHeight: (_root.dense ? 156 : 194) * pixelSizeRatio
   } // QtObject
 
   property
   var banner: QtObject
   {
-	property double minimumWidth: _root.dense ? 288 : 360
-	property double smallTextPadding: _root.dense ? 28 : 36
-	property double smallTextPaddingDesktop: _root.dense ? 72 : 90
+	property double minimumWidth: (_root.dense ? 288 : 360) * pixelSizeRatio
+	property double smallTextPadding: (_root.dense ? 28 : 36) * pixelSizeRatio
+	property double smallTextPaddingDesktop: (_root.dense ? 72 : 90) * pixelSizeRatio
 
-	property double mobileMaxWidth: _root.dense ? 520 : 650
+	property double mobileMaxWidth: (_root.dense ? 520 : 650) * pixelSizeRatio
 
-	property double implicitHeight1Line: _root.dense ? 44 : 54
-	property double implicitHeight2Line: _root.dense ? 90 : 112
-	property double implicitHeightThumb: _root.dense ? 96 : 120
-	property double implicitHeight1LineDesk: _root.dense ? 42 : 52
-	property double implicitHeight2LineDesk: _root.dense ? 58 : 72
-	property double implicitHeight3LineDesk: _root.dense ? 72 : 90
+	property double implicitHeight1Line: (_root.dense ? 44 : 54) * pixelSizeRatio
+	property double implicitHeight2Line: (_root.dense ? 90 : 112) * pixelSizeRatio
+	property double implicitHeightThumb: (_root.dense ? 96 : 120) * pixelSizeRatio
+	property double implicitHeight1LineDesk: (_root.dense ? 42 : 52) * pixelSizeRatio
+	property double implicitHeight2LineDesk: (_root.dense ? 58 : 72) * pixelSizeRatio
+	property double implicitHeight3LineDesk: (_root.dense ? 72 : 90) * pixelSizeRatio
   } // QtObject
 
   property
   var roundIcon: QtObject
   {
-	property double size: _root.dense ? 32 : 40
-	property double iconWidth: _root.dense ? 18 : 24
+	property double size: (_root.dense ? 32 : 40) * pixelSizeRatio
+	property double iconWidth: (_root.dense ? 18 : 24) * pixelSizeRatio
   }
 
   property
   var snackbar: QtObject
   {
-	property double implicitWidth: _root.dense ? 276 : 344
-	property double implicitHeight: _root.dense ? 38 : 48
-	property double implicitHeight2: _root.dense ? 54 : 68
+	property double implicitWidth: (_root.dense ? 276 : 344) * pixelSizeRatio
+	property double implicitHeight: (_root.dense ? 38 : 48) * pixelSizeRatio
+	property double implicitHeight2: (_root.dense ? 54 : 68) * pixelSizeRatio
 	property double radius: _root.dense ? 3 : 4
-	property double elevation: 6
+	property double elevation: 6 * pixelSizeRatio
 	property double shortDisplayTime: 2000
 	property double longDisplayTime: 5000
   } // QtObject
@@ -1269,67 +1269,70 @@ Qaterial.Theme
   property
   var textField: QtObject
   {
-	property double cursorWidth: _root.dense ? 2 : 2
-	property double implicitWidth: _root.dense ? 96 : 120
-	property double horizontalPadding: 0 //_root.dense ? 12 : 16
-	property double leadingSpacing: _root.dense ? 12 : 16
-	property double textSpacing: _root.dense ? 2 : 4
+	property double cursorWidth: (_root.dense ? 2 : 2) * pixelSizeRatio
+	property double implicitWidth: (_root.dense ? 96 : 120) * pixelSizeRatio
+	property double horizontalPadding: 0 //(_root.dense ? 12 : 16) * pixelSizeRatio
+	property double leadingSpacing: (_root.dense ? 12 : 16) * pixelSizeRatio
+	property double textSpacing: (_root.dense ? 2 : 4) * pixelSizeRatio
 
-	property double topPadding: _root.dense ? 6 : 8
-	property double topPaddingTitle: _root.dense ? 18 : 22
-	property double topPaddingTitleOffset: _root.dense ? 2 : 4
-	property double bottomPadding: _root.dense ? 8 : 10
-	property double bottomPaddingHint: _root.dense ? 24 : 28
-	property double bottomPaddingHintOffset: _root.dense ? 2 : 4
+	property double topPadding: (_root.dense ? 6 : 8) * pixelSizeRatio
+	property double topPaddingTitle: (_root.dense ? 18 : 22) * pixelSizeRatio
+	property double topPaddingTitleOffset: (_root.dense ? 2 : 4) * pixelSizeRatio
+	property double bottomPadding: (_root.dense ? 8 : 10) * pixelSizeRatio
+	property double bottomPaddingHint: (_root.dense ? 24 : 28) * pixelSizeRatio
+	property double bottomPaddingHintOffset: (_root.dense ? 2 : 4) * pixelSizeRatio
 
-	property double iconSize: _root.dense ? 20 : 24
-	property double iconWidth: _root.dense ? 32 : 40
+	property double iconSize: (_root.dense ? 20 : 24) * pixelSizeRatio
+	property double iconWidth: (_root.dense ? 32 : 40) * pixelSizeRatio
 
 	// background
-	property double backgroundBorderHeight: _root.dense ? 2 : 2
-	property double backgroundVerticalOffset: _root.dense ? 6 : 8
+	property double backgroundBorderHeight: (_root.dense ? 2 : 2) * pixelSizeRatio
+	property double backgroundVerticalOffset: (_root.dense ? 6 : 8) * pixelSizeRatio
   } // QtObject
 
   property
   var dialog: QtObject
   {
 	property double spacing: 0
-	property double padding: _root.dense ? 2 : 4
-	property double buttonRectImplicitHeight: _root.dense ? 42 : 52
+	property double padding: (_root.dense ? 2 : 4) * pixelSizeRatio
+	property double buttonRectImplicitHeight: (_root.dense ? 42 : 52) * pixelSizeRatio
 	property double radius: _root.dense ? 2 : 4
-	property double horizontalPadding: _root.dense ? 18 : 24
-	property double topPadding: _root.dense ? 16 : 20
-	property double elevation: _root.dense ? 18 : 24
-	property double implicitWidth: _root.dense ? 224 : 280
-	property double maxHeight: _root.dense ? 500 : 500
-	property double indicatorSpacing: _root.dense ? 18 : 24
+	property double horizontalPadding: (_root.dense ? 18 : 24) * pixelSizeRatio
+	property double topPadding: (_root.dense ? 16 : 20) * pixelSizeRatio
+	property double elevation: (_root.dense ? 18 : 24) * pixelSizeRatio
+	property double implicitWidth: (_root.dense ? 224 : 280) * pixelSizeRatio
+	property double maxHeight: (_root.dense ? 500 : 500) * pixelSizeRatio
+	property double indicatorSpacing: (_root.dense ? 18 : 24) * pixelSizeRatio
   } // QtObject
 
   property
   var toolTip: QtObject
   {
-	property double implicitHeight: _root.dense ? 24 : 32
+	property double implicitHeight: (_root.dense ? 24 : 32) * pixelSizeRatio
 	property double radius: _root.dense ? 2 : 4
 	property double opacity: 0.9
-	property double padding: _root.dense ? 8 : 16
+	property double padding: (_root.dense ? 8 : 16) * pixelSizeRatio
   }
 
   property
   var slider: QtObject
   {
-	property double implicitWidth: _root.dense ? 180 : 200
-	property double implicitHeight: _root.dense ? 34 : 48
-	property double padding: _root.dense ? 6 : 8
+	property double implicitWidth: (_root.dense ? 180 : 200) * pixelSizeRatio
+	property double implicitHeight: (_root.dense ? 34 : 48) * pixelSizeRatio
+	property double padding: (_root.dense ? 6 : 8) * pixelSizeRatio
   }
 
 
   /****** VJP *******/
 
-  readonly property real defaultPixelSize: 16.0
-  property real pixelSize: defaultPixelSize;
-  readonly property real pixelSizeRatio: pixelSize/defaultPixelSize
+  property double devicePixelSizeCorrection: 1.0
 
-  property double horizontalPadding: _root.dense ? 6 : 8
+  property real userPixelSize: defaultPixelSize
+  readonly property real defaultPixelSize: 16.0
+  readonly property real pixelSize: userPixelSize * devicePixelSizeCorrection
+  readonly property real pixelSizeRatio: (userPixelSize/defaultPixelSize) * devicePixelSizeCorrection
+
+  property double horizontalPadding: (_root.dense ? 6 : 8) * pixelSizeRatio
 
   property real gameButtonImplicitHeight: 48 * pixelSizeRatio
   property real dashboardButtonSize: (_root.debug ? 128 : 144) * pixelSizeRatio
@@ -1342,5 +1345,7 @@ Qaterial.Theme
 
   property color colorEnemyMarkerWatch: Qaterial.Colors.amber700
   property color colorEnemyMarkerAttack: Qaterial.Colors.red800
+
+
 
 } // QtObject

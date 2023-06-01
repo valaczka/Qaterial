@@ -32,8 +32,8 @@ Item
   width: roundIcon ? roundSize : iconSize
   height: roundIcon ? roundSize : iconSize
 
-  property double iconSize: 24
-  property double roundSize: 40
+  property double iconSize: 24 * Qaterial.Style.pixelSizeRatio
+  property double roundSize: 40 * Qaterial.Style.pixelSizeRatio
 
   Rectangle
   {

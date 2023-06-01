@@ -51,8 +51,8 @@ Qaterial.IconLabelImpl
   mirrored: false
 
   icon.color: root.color
-  icon.width: 24
-  icon.height: 24
+  icon.width: 24 * Qaterial.Style.pixelSizeRatio
+  icon.height: 24 * Qaterial.Style.pixelSizeRatio
 
   iconItem: Qaterial.Icon
   {

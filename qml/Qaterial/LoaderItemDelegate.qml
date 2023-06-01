@@ -39,6 +39,10 @@ T.ItemDelegate
   property bool onPrimary: false
   property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
 
+  property alias textColor: _content.textColor
+  property alias overlineColor: _content.overlineColor
+  property alias secondaryTextColor: _content.secondaryTextColor
+
   // SEPARATOR
   property bool drawSeparator: forceDrawSeparator
   property bool forceDrawSeparator: false

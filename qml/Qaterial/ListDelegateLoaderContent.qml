@@ -29,6 +29,13 @@ Rectangle
 
 	property bool largeThumbnail: false
 
+
+	// COLOR
+
+	property alias textColor: _text.textColor
+	property alias overlineColor: _text.overlineColor
+	property alias secondaryTextColor: _text.secondaryTextColor
+
 	// ALIGNMENT
 	property bool alignTextRight: false
 	property bool drawline: false
