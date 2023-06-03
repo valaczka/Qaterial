@@ -858,7 +858,7 @@ Qaterial.Theme
 		  return (_root.dense ? 52 : 64) * pixelSizeRatio
 		case Style.DelegateType.Icon:
 		case Style.DelegateType.Round:
-		  return (_root.dense ? 44 : 56) * pixelSizeRatio
+		  return (_root.dense ? 44 : 52) * pixelSizeRatio
 		case Style.DelegateType.Square:
 		case Style.DelegateType.Large:
 		  return (_root.dense ? 58 : 72) * pixelSizeRatio
@@ -870,7 +870,7 @@ Qaterial.Theme
 
 	function implicitHeight2Line(type)
 	{
-	  switch(type)
+	  /*switch(type)
 	  {
 		case Style.DelegateType.Overline:
 		  return (_root.dense ? 70 : 88) * pixelSizeRatio
@@ -882,12 +882,28 @@ Qaterial.Theme
 		default:
 		  break
 	  }
-	  return (_root.dense ? 52 : 64) * pixelSizeRatio
+	  return (_root.dense ? 52 : 64) * pixelSizeRatio*/
+
+		switch(type)
+		{
+		case Style.DelegateType.Overline:
+			return (_root.dense ? 52 : 64) * pixelSizeRatio
+		case Style.DelegateType.Icon:
+		case Style.DelegateType.Round:
+			return (_root.dense ? 44 : 52) * pixelSizeRatio
+		case Style.DelegateType.Square:
+		case Style.DelegateType.Large:
+			return (_root.dense ? 58 : 72) * pixelSizeRatio
+		default:
+			break
+		}
+		return (_root.dense ? 38 : 48) * pixelSizeRatio
 	} // function implicitHeight2Line(type)
 
 	function implicitHeight3Line(type)
 	{
-	  return (_root.dense ? 70 : 88) * pixelSizeRatio
+		return (_root.dense ? 52 : 64) * pixelSizeRatio
+	  //return (_root.dense ? 70 : 88) * pixelSizeRatio
 	} // function implicitHeight3Line(type)
 
 	function implicitHeight(type, lines)
@@ -945,7 +961,7 @@ Qaterial.Theme
 		case Style.DelegateType.Icon:
 		  return (_root.dense ? 12 : 16) * pixelSizeRatio
 		case Style.DelegateType.Round:
-		  return (_root.dense ? 6 : 8) * pixelSizeRatio
+		  return (_root.dense ? 6 : 6) * pixelSizeRatio
 		case Style.DelegateType.Square:
 		case Style.DelegateType.Large:
 		  return (_root.dense ? 7 : 8) * pixelSizeRatio
@@ -957,19 +973,21 @@ Qaterial.Theme
 
 	function topPadding2Line(type, lines)
 	{
-	  switch(type)
-	  {
-		case Style.DelegateType.Icon:
-		  return (_root.dense ? 20 : 24) * pixelSizeRatio
-		case Style.DelegateType.Round:
-		  return (_root.dense ? 12 : 16) * pixelSizeRatio
-		case Style.DelegateType.Square:
-		case Style.DelegateType.Large:
-		  return (_root.dense ? 9 : 8) * pixelSizeRatio
-		default:
-		  break
-	  }
-	  return 0
+		switch(type)
+		{
+		  case Style.DelegateType.Icon:
+			return (_root.dense ? 12 : 16) * pixelSizeRatio
+		  case Style.DelegateType.Round:
+			return (_root.dense ? 6 : 6) * pixelSizeRatio
+		  case Style.DelegateType.Square:
+		  case Style.DelegateType.Large:
+			return (_root.dense ? 7 : 8) * pixelSizeRatio
+		  default:
+			break
+		}
+		return 0
+
+
 	} // function topPadding2Line(type, lines)
 
 	function topPadding3Line(type, lines)
@@ -1004,12 +1022,12 @@ Qaterial.Theme
 	{
 	  if(type === Style.DelegateType.Large)
 		return 0
-	  return (_root.dense ? 12 : 16) * pixelSizeRatio
+	  return (_root.dense ? 6 : 8) * pixelSizeRatio
 	} // function leftPadding(type, lines)
 
 	function rightPadding(type, lines)
 	{
-	  return (_root.dense ? 12 : 16) * pixelSizeRatio
+	  return (_root.dense ? 6 : 8) * pixelSizeRatio
 	} // function rightPadding(type, lines)
 
 	function baselineOffsetText(type, lines)
@@ -1024,7 +1042,7 @@ Qaterial.Theme
 		  case Style.DelegateType.Round:
 		  case Style.DelegateType.Square:
 		  case Style.DelegateType.Large:
-			return (_root.dense ? 26 : 32) * pixelSizeRatio
+			return (_root.dense ? 18 : 22) * pixelSizeRatio
 		  default:
 			break
 		}
@@ -1049,7 +1067,7 @@ Qaterial.Theme
 		  case Style.DelegateType.Round:
 		  case Style.DelegateType.Square:
 		  case Style.DelegateType.Large:
-			return (_root.dense ? 42 : 52) * pixelSizeRatio
+			return (_root.dense ? 36 : 39) * pixelSizeRatio
 		  default:
 			break
 		}

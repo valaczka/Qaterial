@@ -69,7 +69,7 @@ Rectangle
 
   // Qaterial.Style.DelegateType.Default | Qaterial.Style.DelegateType.Overline | Qaterial.Style.DelegateType.Icon
   // Qaterial.Style.DelegateType.Round | Qaterial.Style.DelegateType.Square | Qaterial.Style.DelegateType.Large
-  readonly property int type: (icon.source != "") ? (roundIcon ? Qaterial.Style.DelegateType.RoundIcon : Qaterial.Style
+  readonly property int type: (_icon.source != "") ? (roundIcon ? Qaterial.Style.DelegateType.RoundIcon : Qaterial.Style
 	.DelegateType.Icon) : overlineText != "" ? Qaterial.Style.DelegateType.Overline : (roundSourceSet ||
 	squareSourceSet) ? (largeThumbnail ? Qaterial.Style.DelegateType.Square : Qaterial.Style.DelegateType.Round) : largeSourceSet ? Qaterial.Style.DelegateType.Large : Qaterial.Style.DelegateType.Default
 
