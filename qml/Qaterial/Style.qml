@@ -724,7 +724,7 @@ Qaterial.Theme
 	property double rightInset: (_root.dense ? 2 : 4) * pixelSizeRatio
 
 	property double outlinedWidth: 1
-	property double outlinedFocusWidth: _root.dense ? 1 : 2
+	property double outlinedFocusWidth: 1//_root.dense ? 1 : 2
   } // QtObject
 
   enum FabType
@@ -1046,11 +1046,11 @@ Qaterial.Theme
 		  default:
 			break
 		}
-		return (_root.dense ? 22 : 28) * pixelSizeRatio
+		return (_root.dense ? /*22*/ 18 : 28) * pixelSizeRatio
 	  }
 	  else if(lines >= 3)
 	  {
-		return (_root.dense ? 22 : 28) * pixelSizeRatio
+		return (_root.dense ? /*22*/ 16 : 28) * pixelSizeRatio
 	  }
 	  return 0
 	} // function baselineOffsetText(type, lines)
@@ -1071,11 +1071,11 @@ Qaterial.Theme
 		  default:
 			break
 		}
-		return (_root.dense ? 38 : 48) * pixelSizeRatio
+		return (_root.dense ? /*38*/ 34 : 48) * pixelSizeRatio
 	  }
 	  else if(lines >= 3)
 	  {
-		return (_root.dense ? 38 : 48) * pixelSizeRatio
+		return (_root.dense ? /*38*/ 32 : 48) * pixelSizeRatio
 	  }
 	  return 0
 	} // function baselineOffsetSecText(type, lines)

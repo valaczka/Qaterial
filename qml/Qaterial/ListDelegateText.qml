@@ -34,7 +34,7 @@ Rectangle
 
   property color overlineColor: textColor
   property color textColor: enabled ? Qaterial.Style.colorTheme.primaryText : Qaterial.Style.colorTheme.disabledText
-  property color secondaryTextColor: textColor
+  property color secondaryTextColor: enabled ? Qaterial.Style.colorTheme.secondaryText : Qaterial.Style.colorTheme.disabledText
 
   readonly property int lines: (secondaryText != "" ? _info.lineCount : 0) + 1
   property int elide: mirrored ? Text.ElideLeft : Text.ElideRight

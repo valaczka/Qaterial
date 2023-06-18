@@ -19,5 +19,5 @@ Qaterial.CheckDelegate
   indicatorSpacing: Qaterial.Style.dialog.indicatorSpacing
   alignTextRight: true
   LayoutMirroring.enabled: true
-  width: parent.width // Not sure if this should be here ?
+  width: parent ? parent.width : implicitWidth
 } // RadioDelegate
