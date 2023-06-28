@@ -18,8 +18,8 @@ Qaterial.Dialog
   focus: true
 
   x: Math.floor((parent.width - width) / 2)
-  y: Math.floor((parent.height - (Qt.inputMethod && Qt.inputMethod.visible ? (Qt.inputMethod.keyboardRectangle
-    .height / Screen.devicePixelRatio) : 0) - height) / 2)
+  y: Math.floor((parent.height /*- (Qt.inputMethod && Qt.inputMethod.visible ? (Qt.inputMethod.keyboardRectangle
+	.height / Screen.devicePixelRatio) : 0)*/ - height) / 2)
 
   parent: Overlay.overlay
   property int dialogImplicitWidth: Qaterial.Style.dialog.implicitWidth

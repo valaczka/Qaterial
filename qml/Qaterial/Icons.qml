@@ -1,5 +1,5 @@
 // File auto generated
-// Generated at Sat Jun 3 19:05:40 2023
+// Generated at Sat Jun 24 14:14:23 2023
 pragma Singleton
 import QtQuick 2.12
 QtObject
