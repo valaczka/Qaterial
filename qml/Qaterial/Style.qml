@@ -1298,7 +1298,7 @@ Qaterial.Theme
 	property double topPaddingTitleOffset: (_root.dense ? 2 : 4) * pixelSizeRatio
 	property double bottomPadding: (_root.dense ? 8 : 10) * pixelSizeRatio
 	property double bottomPaddingHint: (_root.dense ? 24 : 28) * pixelSizeRatio
-	property double bottomPaddingHintOffset: (_root.dense ? 2 : 4) * pixelSizeRatio
+	property double bottomPaddingHintOffset: (_root.dense ? 0 : 4) * pixelSizeRatio
 
 	property double iconSize: (_root.dense ? 20 : 24) * pixelSizeRatio
 	property double iconWidth: (_root.dense ? 32 : 40) * pixelSizeRatio
