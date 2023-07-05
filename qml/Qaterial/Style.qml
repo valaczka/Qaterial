@@ -1355,7 +1355,7 @@ Qaterial.Theme
   property real gameButtonImplicitHeight: 48 * pixelSizeRatio
   property real dashboardButtonSize: (_root.debug ? 128 : 144) * pixelSizeRatio
 
-  property int maxContainerSize: 1170
+  property int maxContainerSize: 1170 * pixelSizeRatio
 
   property color colorGlow: Qaterial.Colors.cyan400
   property color colorEnemyGlow: Qaterial.Colors.deepOrangeA700
