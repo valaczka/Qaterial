@@ -145,11 +145,13 @@ LineChart 1.0 LineChart.qml
 ListDelegateBackground 1.0 ListDelegateBackground.qml
 ListDelegateContent 1.0 ListDelegateContent.qml
 ListDelegateFullLoaderContent 1.0 ListDelegateFullLoaderContent.qml
+ListDelegateLoaderPlaceholderContent 1.0 ListDelegateLoaderPlaceholderContent.qml
 ListDelegateLoaderContent 1.0 ListDelegateLoaderContent.qml
 ListDelegateText 1.0 ListDelegateText.qml
 ListDialog 1.0 ListDialog.qml
 ListSectionTitle 1.0 ListSectionTitle.qml
 LoaderItemDelegate 1.0 LoaderItemDelegate.qml
+LoaderItemPlaceholderDelegate 1.0 LoaderItemPlaceholderDelegate.qml
 MaterialColorPalette 1.0 MaterialColorPalette.qml
 Menu 1.0 Menu.qml
 MenuBar 1.0 MenuBar.qml
