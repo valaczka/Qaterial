@@ -12,6 +12,10 @@ import "." as Qaterial
 
 Qaterial.TextFieldIconButton
 {
+	visible: textField ? textField.length :
+						 textArea ? textArea.length :
+									true
+
   icon.source: Qaterial.Icons.backspace // VJP //Qaterial.Icons.closeCircle
   onClicked: function()
   {

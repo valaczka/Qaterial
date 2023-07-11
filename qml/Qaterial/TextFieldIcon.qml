@@ -20,12 +20,14 @@ Qaterial.ColorIcon
   width: visible ? Qaterial.Style.textField.iconWidth : 0 //width: Qaterial.Style.textField.iconWidth
   height: Qaterial.Style.textField.iconWidth
 
+  anchors.verticalCenter: parent && (parent instanceof Qaterial.TextFieldButtonContainer) ? parent.verticalCenter : undefined
+
   property bool drawline: Qaterial.Style.debug.drawDebugButton
 
   Qaterial.DebugRectangle
   {
-    anchors.fill: parent
-    border.color: "pink"
-    visible: _control.drawline
+	anchors.fill: parent
+	border.color: "pink"
+	visible: _control.drawline
   } // DebugRectangle
 } // ColorIcon

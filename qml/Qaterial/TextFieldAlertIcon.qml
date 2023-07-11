@@ -15,10 +15,15 @@ Qaterial.TextFieldIcon
   id: _control
   color: Qaterial.Style.errorColor
   source: Qaterial.Icons.alertCircle
+
+  visible: textField ? textField.errorState :
+					   textArea ? textArea.errorState :
+								  true
+
   onVisibleChanged: function()
   {
-    if(visible)
-      _anim.start()
+	if(visible)
+	  _anim.start()
   }
   ErrorSequentialAnimation { id: _anim;target: _control; }
 } // TextFieldIcon

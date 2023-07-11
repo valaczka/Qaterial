@@ -173,7 +173,8 @@ T.TextField
 	iconSize: Qaterial.Style.textField.iconSize
 	width: Qaterial.Style.textField.iconWidth
 	height: Qaterial.Style.textField.iconWidth
-	y: Math.max(Qaterial.Style.textField.topPadding, (_control.height-height)/2)
+	y: (_control.title != "" ? Qaterial.Style.textField.topPadding : 0)+
+	   Math.max(0, (_control.height-_control.bottomPadding-height)/2)
 
 	opacity: _control.leadingIconVisible ? color.a : 0.0
 	Behavior on opacity

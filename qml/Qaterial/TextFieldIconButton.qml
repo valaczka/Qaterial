@@ -20,16 +20,18 @@ Qaterial.AppBarButton
   bottomInset: 0
   foregroundColor:
   {
-    if(enabled)
-    {
-      if(colorReversed)
-        return Qaterial.Style.secondaryTextColorReversed()
-      return Qaterial.Style.secondaryTextColor()
-    }
-    if(colorReversed)
-      return Qaterial.Style.disabledTextColorReversed()
-    return Qaterial.Style.disabledTextColor()
+	if(enabled)
+	{
+	  if(colorReversed)
+		return Qaterial.Style.secondaryTextColorReversed()
+	  return Qaterial.Style.secondaryTextColor()
+	}
+	if(colorReversed)
+	  return Qaterial.Style.disabledTextColorReversed()
+	return Qaterial.Style.disabledTextColor()
   }
 
   width: visible ? implicitWidth : 0
+
+  anchors.verticalCenter: parent && (parent instanceof Qaterial.TextFieldButtonContainer) ? parent.verticalCenter : undefined
 } // AppBarButton
