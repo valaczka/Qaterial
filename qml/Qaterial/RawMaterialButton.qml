@@ -148,7 +148,7 @@ T.Button
 
 	////****** VJP *****//////
 	wrapMode: _control.wrapMode
-	elide: /*implicitWidth > width ? Text.ElideRight : */Text.ElideNone
+	elide: _control.implicitWidth > _control.width ? Text.ElideRight : Text.ElideNone
 	maximumLineCount: _control.maximumLineCount
 	horizontalAlignment: _control.horizontalAlignment
   } // IconLabel
