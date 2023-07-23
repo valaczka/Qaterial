@@ -14,7 +14,7 @@
 #include <QtCore/QUrl>
 #include <QtCore/QDir>
 
-#include <QtGui/QGuiApplication>
+#include <QtWidgets/QApplication>
 #include <QtGui/QFontDatabase>
 
 #include <QtQml/QQmlEngine>

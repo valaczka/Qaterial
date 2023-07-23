@@ -22,67 +22,67 @@
 
 #include <Qaterial/IO/Clipboard.hpp>
 
-#include <QtGui/QGuiApplication>
+#include <QtWidgets/QApplication>
 #include <QtGui/QClipboard>
 #include <QtCore/QMimeData>
 
 namespace qaterial {
 
 Clipboard::Clipboard(QObject* parent)
-    : QObject(parent)
-    , _clipboard(QGuiApplication::clipboard())
+	: QObject(parent)
+	, _clipboard(QApplication::clipboard())
 {
-    // If assert here it mean Clipboard have been instantiated in a non QGuiApplication context
-    Q_ASSERT(_clipboard);
+	// If assert here it mean Clipboard have been instantiated in a non QApplication context
+	Q_ASSERT(_clipboard);
 
-    connect(_clipboard,
-        &QClipboard::dataChanged,
-        this,
-        [this]()
-        {
-            QClipboard* clipboard = QGuiApplication::clipboard();
-            if(!clipboard)
-                return;
+	connect(_clipboard,
+		&QClipboard::dataChanged,
+		this,
+		[this]()
+		{
+			QClipboard* clipboard = QApplication::clipboard();
+			if(!clipboard)
+				return;
 
-            const auto mimeData = clipboard->mimeData();
-            if(!mimeData)
-                return;
-            if(mimeData->hasText())
-            {
-                Q_EMIT textChanged();
-            }
-            Q_EMIT ownsChanged();
-        });
+			const auto mimeData = clipboard->mimeData();
+			if(!mimeData)
+				return;
+			if(mimeData->hasText())
+			{
+				Q_EMIT textChanged();
+			}
+			Q_EMIT ownsChanged();
+		});
 }
 
 QString Clipboard::text() const
 {
-    const auto mimeData = _clipboard->mimeData();
-    return mimeData && mimeData->hasText() ? mimeData->text() : "";
+	const auto mimeData = _clipboard->mimeData();
+	return mimeData && mimeData->hasText() ? mimeData->text() : "";
 }
 
 void Clipboard::setText(const QString& value)
 {
-    // Don't copy data in clipboard if we already own the data, and data is same
-    if(owns() && _clipboard->mimeData() && _clipboard->mimeData()->hasText() && _clipboard->text() == value)
-        return;
+	// Don't copy data in clipboard if we already own the data, and data is same
+	if(owns() && _clipboard->mimeData() && _clipboard->mimeData()->hasText() && _clipboard->text() == value)
+		return;
 
-    auto mimeData = new QMimeData();
-    mimeData->setText(value);
-    _clipboard->setMimeData(mimeData);
-    Q_EMIT ownsChanged();
+	auto mimeData = new QMimeData();
+	mimeData->setText(value);
+	_clipboard->setMimeData(mimeData);
+	Q_EMIT ownsChanged();
 }
 
 bool Clipboard::owns() const
 {
-    QClipboard* clipboard = QGuiApplication::clipboard();
-    return clipboard->ownsClipboard();
+	QClipboard* clipboard = QApplication::clipboard();
+	return clipboard->ownsClipboard();
 }
 
 void Clipboard::clear()
 {
-    QClipboard* clipboard = QGuiApplication::clipboard();
-    clipboard->clear();
+	QClipboard* clipboard = QApplication::clipboard();
+	clipboard->clear();
 }
 
 }

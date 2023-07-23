@@ -57,7 +57,7 @@ Item
 	  iconSize: root.settings && root.settings.iconSize ? root.settings.iconSize : Qaterial.Style.roundIcon.iconWidth
 	  roundSize: root.settings && root.settings.roundSize ? root.settings.roundSize : Qaterial.Style.roundIcon.size
 	  textColor: root.settings && root.settings.textColor ? root.settings.textColor : Qaterial.Style.primaryTextColor()
-	  autoFocusButtons: Qt.platform.os == "windows" || Qt.platform.os == "linux" || Qt.platform.os == "osx"
+	  autoFocusButtons: Qt.platform.os == "windows" || Qt.platform.os == "linux" || Qt.platform.os == "osx" || Qt.platform.os == "wasm"
 	  /********************/
 
 	  onAccepted: function()
