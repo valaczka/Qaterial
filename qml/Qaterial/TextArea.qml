@@ -58,6 +58,8 @@ Control
   property bool leadingIconErrorAnimation: false
   property bool trailingInline: true
 
+  property bool readOnly: false
+
   property bool titleUp: textAreaActiveFocus || _control.length || _control.preeditText
   readonly property bool anyHintVisible: (_control.helperText != "" || _control._errorText != "") || _lineCountLabel
 	.visible
@@ -404,6 +406,7 @@ Control
 	placeholderTextColor: _control.placeholderTextColor
 	verticalAlignment: _control.verticalAlignment
 	renderType: _control.renderType
+	readOnly: _control.readOnly
   } // TextAreaContent
 
   // BACKGROUND
