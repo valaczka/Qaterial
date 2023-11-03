@@ -127,7 +127,11 @@ static void Qaterial_loadResources(bool autoRegisterStyle)
 
 	// Force load qrc resources
 	// This is mandatory when used as a static library
+#if QT_VERSION >= 0x060000
+	Q_INIT_RESOURCE(Qaterial_Qt6);
+#else
 	Q_INIT_RESOURCE(Qaterial);
+#endif
 	//Q_INIT_RESOURCE(QaterialFonts);
 	Q_INIT_RESOURCE(QaterialIcons);
 
