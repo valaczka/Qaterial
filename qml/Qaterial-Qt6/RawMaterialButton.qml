@@ -132,6 +132,7 @@ T.Button
   property int wrapMode: Text.NoWrap
   property int maximumLineCount: 2
   property int horizontalAlignment: Qt.AlignHCenter
+  property int elide: implicitWidth > width ? Text.ElideRight : Text.ElideNone
 
   contentItem: Qaterial.IconLabel
   {
@@ -148,7 +149,7 @@ T.Button
 
 	////****** VJP *****//////
 	wrapMode: _control.wrapMode
-	elide: _control.implicitWidth > _control.width ? Text.ElideRight : Text.ElideNone
+	elide: _control.elide
 	maximumLineCount: _control.maximumLineCount
 	horizontalAlignment: _control.horizontalAlignment
   } // IconLabel
