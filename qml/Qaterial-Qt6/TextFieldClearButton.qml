@@ -19,7 +19,11 @@ Qaterial.TextFieldIconButton
   icon.source: Qaterial.Icons.backspace // VJP //Qaterial.Icons.closeCircle
   onClicked: function()
   {
-	if(textField) textField.clear()
+	if(textField) {
+		textField.clear()
+		textField.textEdited()
+		textField.forceActiveFocus()
+	}
 	if(textArea) textArea.clear()
   }
 } // TextFieldIconButton
