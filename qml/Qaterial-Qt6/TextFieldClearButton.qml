@@ -12,18 +12,18 @@ import "." as Qaterial
 
 Qaterial.TextFieldIconButton
 {
-	visible: textField ? textField.length :
-						 textArea ? textArea.length :
+	visible: textField ? !textField.readOnly && textField.length :
+						 textArea ? !textArea.readOnly && textArea.length :
 									true
 
   icon.source: Qaterial.Icons.backspace // VJP //Qaterial.Icons.closeCircle
   onClicked: function()
   {
-	if(textField) {
+	if(textField && !textField.readOnly) {
 		textField.clear()
 		textField.textEdited()
 		textField.forceActiveFocus()
 	}
-	if(textArea) textArea.clear()
+	if(textArea && !textArea.readOnly) textArea.clear()
   }
 } // TextFieldIconButton
