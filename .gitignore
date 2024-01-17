@@ -11,3 +11,6 @@ CMakeLists.txt.user
 
 # CPM cache
 .cpm
+
+qml/Qaterial-Qt6/Icons.qml
+qml/Qaterial/Icons.qml
