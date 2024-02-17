@@ -176,7 +176,10 @@ Qaterial.ModalDialog
 	  {
 		radius: _contentItem.radius
 		hour: _dialog.hour
-		onAccepted: (hour) => _dialog.hour = hour
+		onAccepted: (hour) => {
+						_dialog.hour = hour
+						showMinutes = true
+					}
 	  } // EuCircularHourPicker
 	} // EuHour: Component
 
@@ -187,7 +190,10 @@ Qaterial.ModalDialog
 	  {
 		radius: _contentItem.radius
 		hour: _dialog.hour
-		onAccepted: (hour) => _dialog.hour = hour
+		onAccepted: (hour) => {
+						_dialog.hour = hour
+						showMinutes = true
+					}
 	  } // AmCircularHourPicker
 	} // AmHour: Component
 

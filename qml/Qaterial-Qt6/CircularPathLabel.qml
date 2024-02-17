@@ -13,7 +13,7 @@ Item
   property int numberOfElement: 12
   property int currentIndex: -1
 
-  property int labelSize: Qaterial.Style.dense ? 24 : 32
+  property int labelSize: /*Qaterial.Style.dense ? 24 :*/ 32 * Qaterial.Style.pixelSizeRatio
 
   implicitWidth: radius * 2 + labelSize
   implicitHeight: radius * 2 + labelSize
@@ -22,31 +22,31 @@ Item
 
   Repeater
   {
-    id: _repeater
+	id: _repeater
 
-    function degreesToRadians(degrees) { return degrees * (Math.PI / 180) }
+	function degreesToRadians(degrees) { return degrees * (Math.PI / 180) }
 
-    anchors.centerIn: parent
-    model: root.model
-    delegate: Qaterial.Label
-    {
-      readonly property bool checked: root.currentIndex === index
-      width: root.labelSize
-      height: root.labelSize
-      x: -(root.radius) * Math.sin(_repeater.degreesToRadians(index * (360 / root.numberOfElement) + 180)) + (parent
-        .width / 2 - width / 2)
-      y: (root.radius) * Math.cos(_repeater.degreesToRadians(index * (360 / root.numberOfElement) + 180)) + (parent
-        .height / 2 - height / 2)
-      text: modelData
-      horizontalAlignment: Text.AlignHCenter
-      verticalAlignment: Text.AlignVCenter
+	anchors.centerIn: parent
+	model: root.model
+	delegate: Qaterial.Label
+	{
+	  readonly property bool checked: root.currentIndex === index
+	  width: root.labelSize
+	  height: root.labelSize
+	  x: -(root.radius) * Math.sin(_repeater.degreesToRadians(index * (360 / root.numberOfElement) + 180)) + (parent
+		.width / 2 - width / 2)
+	  y: (root.radius) * Math.cos(_repeater.degreesToRadians(index * (360 / root.numberOfElement) + 180)) + (parent
+		.height / 2 - height / 2)
+	  text: modelData
+	  horizontalAlignment: Text.AlignHCenter
+	  verticalAlignment: Text.AlignVCenter
 
-      font: root.font
-      colorReversed: Qaterial.Style.shouldReverseForegroundOnAccent && checked
+	  font: root.font
+	  colorReversed: Qaterial.Style.shouldReverseForegroundOnAccent && checked
 
-      onCheckedChanged: () => font.bold = checked
+	  onCheckedChanged: () => font.bold = checked
 
-      //Qaterial.DebugRectangle { anchors.fill: parent }
-    }
+	  //Qaterial.DebugRectangle { anchors.fill: parent }
+	}
   }
 }
