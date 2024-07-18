@@ -61,7 +61,10 @@ Item
   {
     // _delegateLoader.sourceComponent should be destroyed after
     // animation finishes
-    if(expanded && !_delayDestroyTimer.isRunning)
+
+    // DISABLE destroy
+
+    /*if(expanded && !_delayDestroyTimer.isRunning)
     {
       _delayDestroyTimer.stop()
       _delegateLoader.active = true
@@ -69,7 +72,7 @@ Item
     else
     {
       _delayDestroyTimer.start(root.animation.duration + 100)
-    }
+    } */
 
     // Delay the resize, to be sure that every property binded to expanded are already evaluated
     _evaluateDelegateClipperHeight.start()
@@ -155,7 +158,8 @@ Item
     Loader
     {
       id: _delegateLoader
-      active: false
+      //active: false			// Always activate
+      active: true
       width: _delegateClipper.width
       sourceComponent: root.delegate
 
@@ -173,14 +177,14 @@ Item
         }
       }
 
-      Component.onCompleted: function()
+      /* Component.onCompleted: function()			// Always acticate
       {
         active = root.expanded
         if(!active)
         {
           _delayEnableAnimation.start()
         }
-      }
+      } */
     } // Loader
   } // Item
 } // Rectangle
