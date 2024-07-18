@@ -24,6 +24,8 @@ Qaterial.ModalDialog
 	readonly property
 	var defaultDelegate: _defaultDelegate
 
+	property Component listViewHeader: null
+
 	Component
 	{
 		id: _defaultDelegate
@@ -59,6 +61,8 @@ Qaterial.ModalDialog
 		delegate: _root.delegate
 		highlightFollowsCurrentItem: true
 		currentIndex: _root.currentIndex
+
+		header: _root.listViewHeader
 
 		function select(_index) {
 			if (_index > -1) {
