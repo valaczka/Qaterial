@@ -133,6 +133,7 @@ T.Button
   property int maximumLineCount: 2
   property int horizontalAlignment: Qt.AlignHCenter
   property int elide: implicitWidth > width ? Text.ElideRight : Text.ElideNone
+  property int textFormat: Text.PlainText
 
   contentItem: Qaterial.IconLabel
   {
@@ -152,6 +153,7 @@ T.Button
 	elide: _control.elide
 	maximumLineCount: _control.maximumLineCount
 	horizontalAlignment: _control.horizontalAlignment
+	textFormat: _control.textFormat
   } // IconLabel
 
   property double backgroundImplicitWidth: Qaterial.Style.rawButton.minWidth

@@ -43,6 +43,7 @@ Qaterial.IconLabelImpl
   property int elide: Text.ElideRight
   property int wrapMode: Text.NoWrap
   property int maximumLineCount: Number.MAX_SAFE_INTEGER
+  property int textFormat: Text.PlainText
 
   horizontalAlignment: Qt.AlignHCenter
   verticalAlignment: Qt.AlignVCenter
@@ -73,5 +74,6 @@ Qaterial.IconLabelImpl
 	maximumLineCount: root.maximumLineCount
 	/***** VJP ******/
 	horizontalAlignment: root.horizontalAlignment
+	textFormat: root.textFormat
   }
 }
